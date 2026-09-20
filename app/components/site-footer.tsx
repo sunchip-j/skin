@@ -3,7 +3,10 @@ import { siteConfig } from "@/config/site";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-emerald-100/70 bg-[#f7fbf8] px-5 py-5 text-slate-400">
+    <footer
+      data-skin-site-footer
+      className="border-t border-emerald-100/70 bg-[#f7fbf8] px-5 py-5 text-slate-400"
+    >
       <div className="mx-auto flex w-full max-w-lg flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-[0.68rem] font-semibold">
         <span className="font-black tracking-[0.12em] text-emerald-700/80">
           {siteConfig.name}
