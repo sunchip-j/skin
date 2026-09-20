@@ -1,14 +1,16 @@
 import type { MetadataRoute } from "next";
-
-const BASE_URL = "https://skin.vercel.app";
+import { siteConfig } from "@/config/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: BASE_URL,
+      url: siteConfig.url,
     },
     {
-      url: `${BASE_URL}/survey`,
+      url: `${siteConfig.url}/survey`,
+    },
+    {
+      url: `${siteConfig.url}/privacy`,
     },
   ];
 }

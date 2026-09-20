@@ -129,41 +129,18 @@ export function calculateSkinType(answers: SkinAnswerMap): SkinAssessmentResult 
   };
 }
 
-export function encodeSkinResult(result: SkinAssessmentResult): string {
-  const params = new URLSearchParams();
+export function createSkinResultFromScores(
+  code: SkinTypeCode,
+  scores: SkinScores
+): SkinAssessmentResult | null {
+  const calculatedCode = DIMENSION_KEYS.map((key) =>
+    getDimensionResult(key, scores[key])
+  ).join("");
 
-  params.set("type", result.code);
-
-  for (const key of DIMENSION_KEYS) {
-    params.set(key, String(result.scores[key]));
-  }
-
-  return params.toString();
-}
-
-export function getSkinResultFromParams(params: {
-  [key: string]: string | string[] | undefined;
-}): SkinAssessmentResult | null {
-  const codeValue = typeof params.type === "string" ? params.type : "";
-
-  if (!/^[DO][SR][PN][WT]$/.test(codeValue)) {
+  if (calculatedCode !== code) {
     return null;
   }
 
-  const scores = { ...EMPTY_SCORES };
-
-  for (const key of DIMENSION_KEYS) {
-    const value = params[key];
-    const parsed = Number(typeof value === "string" ? value : "");
-
-    if (!Number.isFinite(parsed)) {
-      return null;
-    }
-
-    scores[key] = parsed;
-  }
-
-  const code = codeValue as SkinTypeCode;
   const resultType = skinResults.find((result) => result.code === code);
 
   if (!resultType) {

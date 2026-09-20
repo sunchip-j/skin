@@ -2,10 +2,8 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import {
-  calculateSkinType,
-  encodeSkinResult,
-} from "@/features/skin-type/calculate";
+import { calculateSkinType } from "@/features/skin-type/calculate";
+import { saveSkinResultToSession } from "@/features/skin-type/result-session";
 import type { SkinQuestion } from "@/features/skin-type/types";
 
 type TestRunnerProps = {
@@ -60,7 +58,8 @@ export function TestRunner({ questions }: TestRunnerProps) {
     startTransition(() => {
       try {
         const result = calculateSkinType(answers);
-        router.push(`/result?${encodeSkinResult(result)}`);
+        saveSkinResultToSession(result);
+        router.push("/result");
       } catch (submissionError) {
         setError(
           submissionError instanceof Error

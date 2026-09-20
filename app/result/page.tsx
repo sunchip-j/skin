@@ -1,19 +1,16 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import { getSkinResultFromParams } from "@/features/skin-type/calculate";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { ResultShare } from "@/features/skin-type/components/result-share";
 import { getSkinTypeCards } from "@/features/skin-type/data/skin-type-info";
+import { readSkinResultFromSession } from "@/features/skin-type/result-session";
 import {
   DIMENSION_KEYS,
   type DimensionKey,
+  type SkinAssessmentResult,
 } from "@/features/skin-type/types";
-
-type ResultPageProps = {
-  searchParams: Promise<{
-    [key: string]: string | string[] | undefined;
-  }>;
-};
 
 type DimensionDisplay = {
   leftEn: string;
@@ -123,39 +120,10 @@ function getBasicCareItems(code: string): BasicCareItem[] {
   return tips;
 }
 
-export async function generateMetadata({
-  searchParams,
-}: ResultPageProps): Promise<Metadata> {
-  const params = await searchParams;
-  const result = getSkinResultFromParams(params);
-
-  if (!result) {
-    return {
-      title: "피부 타입 결과",
-      description: "내 바우만 피부 타입 결과를 확인해보세요.",
-    };
-  }
-
-  return {
-    title: `${result.code} | BAUMANN SKIN TYPE`,
-    description: result.resultType.shareText ?? result.resultType.summary,
-    openGraph: {
-      title: `${result.code} | BAUMANN SKIN TYPE`,
-      description: result.resultType.shareText ?? result.resultType.summary,
-    },
-  };
-}
-
-export default async function SkinTypeResultPage({
-  searchParams,
-}: ResultPageProps) {
-  const params = await searchParams;
-  const result = getSkinResultFromParams(params);
-
-  if (!result) {
-    notFound();
-  }
-
+export function SkinTypeResultContent({
+  result,
+  productHref = "/play/skin-type/products",
+}: Readonly<{ result: SkinAssessmentResult; productHref?: string }>) {
   const summary =
     result.resultType.summary ??
     result.resultType.description ??
@@ -351,7 +319,7 @@ export default async function SkinTypeResultPage({
             </p>
 
             <Link
-              href={`/play/skin-type/products?type=${result.code}`}
+              href={productHref}
               className="mt-4 flex h-[3.5rem] w-full items-center justify-center rounded-[18px] bg-emerald-600 text-base font-bold text-white shadow-[0_10px_24px_rgba(5,150,105,0.18)] transition hover:bg-emerald-500"
             >
               맞춤 제품 보기
@@ -387,4 +355,32 @@ export default async function SkinTypeResultPage({
       </section>
     </main>
   );
+}
+
+export default function SkinTypeResultPage() {
+  const router = useRouter();
+  const [result, setResult] = useState<SkinAssessmentResult | null>(null);
+
+  useEffect(() => {
+    const storedResult = readSkinResultFromSession();
+
+    if (!storedResult) {
+      router.replace("/survey");
+      return;
+    }
+
+    // sessionStorage is a browser-only external source and is read after hydration.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setResult(storedResult);
+  }, [router]);
+
+  if (!result) {
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-[linear-gradient(180deg,#f7fbf8_0%,#eef7f4_100%)] px-4 text-sm font-semibold text-slate-500">
+        결과를 불러오는 중...
+      </main>
+    );
+  }
+
+  return <SkinTypeResultContent result={result} />;
 }

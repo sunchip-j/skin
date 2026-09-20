@@ -76,14 +76,5 @@ export function getPreviewResultHref(type: SkinTypeCode): string {
     throw new Error(`${type} 결과 데이터가 없습니다.`);
   }
 
-  const scores = getPreviewScoresForSkinType(type);
-  const params = new URLSearchParams();
-
-  params.set("type", type);
-
-  for (const key of DIMENSION_KEYS) {
-    params.set(key, String(scores[key]));
-  }
-
-  return `/result?${params.toString()}`;
+  return `/dev/result/${type}`;
 }

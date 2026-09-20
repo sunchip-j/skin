@@ -1,67 +1,16 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { ProductRecommendations } from "@/features/skin-type/components/product-recommendations";
 import { ResultBackButton } from "@/features/skin-type/components/result-back-button";
+import { readSkinResultFromSession } from "@/features/skin-type/result-session";
 import type { SkinTypeCode } from "@/features/skin-type/types";
 
-type SkinTypeProductsPageProps = {
-  searchParams: Promise<{
-    type?: string | string[] | undefined;
-  }>;
-};
-
-function parseSkinTypeCode(value: string | string[] | undefined) {
-  const rawValue = Array.isArray(value) ? value[0] : value;
-
-  if (!rawValue) {
-    return null;
-  }
-
-  const code = rawValue.toUpperCase();
-
-  if (!/^[DO][SR][PN][WT]$/.test(code)) {
-    return null;
-  }
-
-  return code as SkinTypeCode;
-}
-
-export async function generateMetadata({
-  searchParams,
-}: SkinTypeProductsPageProps): Promise<Metadata> {
-  const params = await searchParams;
-  const skinType = parseSkinTypeCode(params.type);
-
-  if (!skinType) {
-    return {
-      title: "맞춤 제품 추천 | BAUMANN SKIN TYPE",
-    };
-  }
-
-  const title = `${skinType} 맞춤 제품 추천 | BAUMANN SKIN TYPE`;
-  const description = `${skinType} 피부 특성을 고려한 기본 스킨케어 루틴과 단계별 추천 제품을 확인해보세요.`;
-
-  return {
-    title,
-    description,
-    openGraph: {
-      title,
-      description,
-    },
-  };
-}
-
-export default async function SkinTypeProductsPage({
-  searchParams,
-}: SkinTypeProductsPageProps) {
-  const params = await searchParams;
-  const skinType = parseSkinTypeCode(params.type);
-
-  if (!skinType) {
-    notFound();
-  }
-
+export function SkinTypeProductsContent({
+  skinType,
+}: Readonly<{ skinType: SkinTypeCode }>) {
   return (
     <main className="min-h-screen bg-[linear-gradient(180deg,#f7fbf8_0%,#eef7f4_100%)] px-4 py-5 text-slate-900">
       <section className="mx-auto w-full max-w-lg space-y-5">
@@ -103,4 +52,32 @@ export default async function SkinTypeProductsPage({
       </section>
     </main>
   );
+}
+
+export default function SkinTypeProductsPage() {
+  const router = useRouter();
+  const [skinType, setSkinType] = useState<SkinTypeCode | null>(null);
+
+  useEffect(() => {
+    const result = readSkinResultFromSession();
+
+    if (!result) {
+      router.replace("/survey");
+      return;
+    }
+
+    // sessionStorage is a browser-only external source and is read after hydration.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setSkinType(result.code);
+  }, [router]);
+
+  if (!skinType) {
+    return (
+      <main className="flex min-h-screen items-center justify-center bg-[linear-gradient(180deg,#f7fbf8_0%,#eef7f4_100%)] px-4 text-sm font-semibold text-slate-500">
+        추천 제품을 불러오는 중...
+      </main>
+    );
+  }
+
+  return <SkinTypeProductsContent skinType={skinType} />;
 }
