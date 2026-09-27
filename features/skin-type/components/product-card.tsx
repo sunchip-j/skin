@@ -70,7 +70,7 @@ export function ProductCard({ recommendation }: ProductCardProps) {
           rel="noopener noreferrer"
           className="mt-3 inline-flex items-center text-xs font-black text-emerald-700 transition hover:text-emerald-600"
         >
-          제품 보기
+          올리브영에서 제품 보기
           <span aria-hidden="true" className="ml-1">
             →
           </span>

@@ -8,11 +8,16 @@ import type {
   ProductRecommendation,
   ResolvedRecommendedProduct,
   SkinProduct,
+  SkinTrait,
   SkinTypeCode,
 } from "@/features/skin-type/types";
 
 const SUPPORTED_SKIN_TYPE_PATTERN = /^[DO][SR][PN][WT]$/;
+const SKIN_TRAIT_PATTERN = /^[DOSRPNWT]$/;
 const PRODUCT_CATEGORY_SET = new Set<string>(PRODUCT_CATEGORIES);
+const EXPECTED_ACTIVE_PRODUCT_COUNT = 17;
+const PIGMENTATION_SERUM_ID = "larocheposay-mela-b3-serum-30";
+const WRINKLE_SERUM_ID = "drjart-prejuvenation-firming-bakuchiol-serum-50";
 
 function warnInvalidProduct(message: string) {
   if (process.env.NODE_ENV !== "production") {
@@ -30,6 +35,10 @@ function isProductCategory(value: unknown): value is ProductCategory {
 
 function isSkinTypeCode(value: unknown): value is SkinTypeCode {
   return typeof value === "string" && SUPPORTED_SKIN_TYPE_PATTERN.test(value);
+}
+
+function isSkinTrait(value: unknown): value is SkinTrait {
+  return typeof value === "string" && SKIN_TRAIT_PATTERN.test(value);
 }
 
 function toStringArray(value: unknown): string[] | null {
@@ -50,11 +59,25 @@ function validateRecommendation(
   }
 
   const skinType = value.skinType;
+  const focusTraits = value.focusTraits;
   const reason = value.reason;
   const order = value.order;
 
   if (!isSkinTypeCode(skinType)) {
     warnInvalidProduct(`${productId}: unsupported skinType.`);
+    return null;
+  }
+
+  if (
+    !Array.isArray(focusTraits) ||
+    focusTraits.length === 0 ||
+    focusTraits.some(
+      (trait) => !isSkinTrait(trait) || !skinType.includes(trait)
+    )
+  ) {
+    warnInvalidProduct(
+      `${productId}: focusTraits must be included in its skinType.`
+    );
     return null;
   }
 
@@ -74,6 +97,7 @@ function validateRecommendation(
 
   return {
     skinType,
+    focusTraits,
     reason,
     order,
   };
@@ -145,7 +169,7 @@ function validateProduct(value: unknown, seenIds: Set<string>): SkinProduct | nu
       Boolean(recommendation)
     );
 
-  if (recommendations.length === 0) {
+  if (active && recommendations.length === 0) {
     warnInvalidProduct(`${id}: no valid recommendations.`);
     return null;
   }
@@ -163,6 +187,11 @@ function validateProduct(value: unknown, seenIds: Set<string>): SkinProduct | nu
         : undefined,
     tags,
     summary,
+    oliveYoungGoodsNo:
+      typeof value.oliveYoungGoodsNo === "string" &&
+      value.oliveYoungGoodsNo.trim()
+        ? value.oliveYoungGoodsNo
+        : undefined,
     oliveYoungUrl:
       typeof value.oliveYoungUrl === "string" && value.oliveYoungUrl.trim()
         ? value.oliveYoungUrl
@@ -170,6 +199,76 @@ function validateProduct(value: unknown, seenIds: Set<string>): SkinProduct | nu
     recommendations,
     active,
   };
+}
+
+function validateProductCollection(products: SkinProduct[]): void {
+  const activeProducts = products.filter((product) => product.active);
+
+  if (activeProducts.length !== EXPECTED_ACTIVE_PRODUCT_COUNT) {
+    throw new Error(
+      `active 추천 제품은 ${EXPECTED_ACTIVE_PRODUCT_COUNT}개여야 합니다.`
+    );
+  }
+
+  if (
+    products.some(
+      (product) => !product.active && product.recommendations.length > 0
+    )
+  ) {
+    throw new Error("비활성 제품에는 추천 매핑을 둘 수 없습니다.");
+  }
+
+  const groups = new Map<string, number[]>();
+
+  for (const product of activeProducts) {
+    for (const recommendation of product.recommendations) {
+      if (
+        product.id === PIGMENTATION_SERUM_ID &&
+        !recommendation.skinType.includes("P")
+      ) {
+        throw new Error("색소 세럼은 P 타입에만 추천할 수 있습니다.");
+      }
+
+      if (
+        product.id === WRINKLE_SERUM_ID &&
+        !recommendation.skinType.includes("W")
+      ) {
+        throw new Error("탄력 세럼은 W 타입에만 추천할 수 있습니다.");
+      }
+
+      const key = `${recommendation.skinType}:${product.category}`;
+      groups.set(key, [...(groups.get(key) ?? []), recommendation.order]);
+    }
+  }
+
+  for (const [key, orders] of groups) {
+    const sortedOrders = [...orders].sort((a, b) => a - b);
+    const expectedOrders = sortedOrders.map((_, index) => index + 1);
+
+    if (
+      new Set(sortedOrders).size !== sortedOrders.length ||
+      sortedOrders.some((order, index) => order !== expectedOrders[index])
+    ) {
+      throw new Error(`${key}의 추천 순서는 1부터 중복 없이 이어져야 합니다.`);
+    }
+  }
+
+  const oilyTypes: SkinTypeCode[] = [
+    "ORNT",
+    "ORNW",
+    "ORPT",
+    "ORPW",
+    "OSNT",
+    "OSNW",
+    "OSPT",
+    "OSPW",
+  ];
+
+  for (const skinType of oilyTypes) {
+    if (!groups.has(`${skinType}:moisturizer`)) {
+      throw new Error(`${skinType} 타입의 moisturizer 추천이 없습니다.`);
+    }
+  }
 }
 
 export function getSkinProducts(): SkinProduct[] {
@@ -180,9 +279,12 @@ export function getSkinProducts(): SkinProduct[] {
     return [];
   }
 
-  return rawProducts
+  const products = rawProducts
     .map((product) => validateProduct(product, seenIds))
     .filter((product): product is SkinProduct => Boolean(product));
+
+  validateProductCollection(products);
+  return products;
 }
 
 export function getRecommendedProducts(

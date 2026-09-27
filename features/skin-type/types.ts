@@ -92,6 +92,7 @@ export type RecommendationLevel = "essential" | "recommended" | "optional";
 
 export type ProductRecommendation = {
   skinType: SkinTypeCode;
+  focusTraits: SkinTrait[];
   reason: string;
   order: number;
 };
@@ -104,6 +105,7 @@ export type SkinProduct = {
   imageUrl?: string;
   tags: string[];
   summary: string;
+  oliveYoungGoodsNo?: string;
   oliveYoungUrl?: string;
   recommendations: ProductRecommendation[];
   active: boolean;

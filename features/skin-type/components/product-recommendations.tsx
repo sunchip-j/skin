@@ -13,8 +13,8 @@ type ProductRecommendationsProps = {
   skinType: SkinTypeCode;
 };
 
-function getMoreButtonText(categoryLabel: string, count: number) {
-  return `다른 ${categoryLabel} 추천 ${count}개 보기`;
+function getMoreButtonText(categoryLabel: string) {
+  return `다른 ${categoryLabel} 추천 보기`;
 }
 
 export function ProductRecommendations({
@@ -137,10 +137,7 @@ export function ProductRecommendations({
                       >
                         {isExpanded
                           ? "추가 추천 접기"
-                          : getMoreButtonText(
-                              step.label,
-                              additionalRecommendations.length
-                            )}
+                          : getMoreButtonText(step.label)}
 
                         <span aria-hidden="true" className="ml-1">
                           {isExpanded ? "⌃" : "›"}
@@ -161,8 +158,10 @@ export function ProductRecommendations({
                   ) : null}
                 </div>
               ) : (
-                <p className="mt-3 text-sm font-semibold text-slate-400">
-                  추천 제품을 준비하고 있어요.
+                <p className="mt-3 text-sm font-semibold leading-6 text-slate-400">
+                  {step.optional
+                    ? "현재 특별한 색소·탄력 고민이 없다면 별도의 기능성 제품을 추가하지 않아도 괜찮아요."
+                    : "추천 제품을 준비하고 있어요."}
                 </p>
               )}
             </section>
