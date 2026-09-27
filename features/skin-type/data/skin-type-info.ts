@@ -308,7 +308,6 @@ type TraitCard = {
   code: string;
   title: string;
   description: string;
-  tip: string;
 };
 
 export function getDrynessCard(type: SkinTypeCode): TraitCard {
@@ -316,15 +315,14 @@ export function getDrynessCard(type: SkinTypeCode): TraitCard {
     return {
       code: "D",
       title: "건성",
-      description: "건조·당김을 느끼기 쉬워요.",
-      tip: "보습 크림은 하루 2번, 넉넉하게 발라주세요.",
+      description:
+        "수분과 유분이 부족해 세안 후 당김이나 건조함을 느끼기 쉬워요.",
     };
   }
   return {
     code: "O",
     title: "지성",
-    description: "피지 분비가 많은 편이에요.",
-    tip: "가벼운 제형의 수분 제품을 추천해요.",
+    description: "피지 분비가 활발해 번들거림이나 유분이 쉽게 느껴져요.",
   };
 }
 
@@ -333,15 +331,13 @@ export function getSensitivityCard(type: SkinTypeCode): TraitCard {
     return {
       code: "R",
       title: "저항성",
-      description: "외부 자극에 비교적 안정적인 편이에요.",
-      tip: "향료·각질케어 제품도 비교적 편하게 시도해볼 수 있어요.",
+      description: "화장품이나 환경 변화에 비교적 안정적으로 반응하는 편이에요.",
     };
   }
   return {
     code: "S",
     title: "민감성",
-    description: "외부 자극에 예민하게 반응할 수 있어요.",
-    tip: "무향·저자극 제품 위주로 먼저 테스트해보세요.",
+    description: "화장품이나 환경 변화에 자극 반응이 나타나기 쉬워요.",
   };
 }
 
@@ -350,15 +346,13 @@ export function getPigmentationCard(type: SkinTypeCode): TraitCard {
     return {
       code: "N",
       title: "비색소성",
-      description: "색소 침착 경향이 낮은 편이에요.",
-      tip: "미백보다 보습 중심 케어에 집중해도 좋아요.",
+      description: "자극이나 자외선 이후 색소 흔적이 남는 경향이 비교적 낮아요.",
     };
   }
   return {
     code: "P",
     title: "색소성",
-    description: "색소 침착이 생기기 쉬운 편이에요.",
-    tip: "매일 자외선 차단과 미백 케어를 함께 챙겨주세요.",
+    description: "자극이나 자외선 이후 색소 흔적이 비교적 오래 남기 쉬워요.",
   };
 }
 
@@ -367,15 +361,13 @@ export function getWrinkleCard(type: SkinTypeCode): TraitCard {
     return {
       code: "T",
       title: "탄력",
-      description: "피부 노화 징후가 비교적 적은 편이에요.",
-      tip: "예방 중심 케어면 충분해요.",
+      description: "현재는 탄력 저하나 주름이 나타나는 경향이 비교적 낮아요.",
     };
   }
   return {
     code: "W",
     title: "주름",
-    description: "탄력 저하나 주름이 생기기 쉬운 편이에요.",
-    tip: "탄력·콜라겐 케어 제품을 신경 써서 사용해보세요.",
+    description: "피부 노화에 따른 탄력 저하와 주름을 더 살펴야 하는 타입이에요.",
   };
 }
 

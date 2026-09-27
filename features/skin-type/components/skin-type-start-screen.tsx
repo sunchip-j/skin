@@ -98,7 +98,7 @@ export function SkinTypeStartScreen() {
             </div>
 
             <h1 className="mt-4 text-[1.9rem] font-black leading-[1.13] tracking-[-0.038em] text-slate-950 sm:text-[2.1rem]">
-              내 <span className="text-emerald-600">SKIN TYPE</span>을
+              내 <span className="text-emerald-600">피부 타입</span>을
               <br />
               확인해보세요.
             </h1>
@@ -168,11 +168,11 @@ export function SkinTypeStartScreen() {
 
             <div className="mt-6 border-t border-slate-100 pt-5">
               <p className="text-sm font-semibold leading-6 text-slate-500">
-                네 가지 특성의 조합을 통해
-                <strong className="ml-1 font-black text-slate-800">
+                네 가지 특성의 조합을 통해{" "}
+                <strong className="font-black text-slate-800">
                   16가지 피부 타입
                 </strong>
-                중 하나로 분류합니다.
+                {" "}중 하나로 분류합니다.
               </p>
             </div>
           </section>

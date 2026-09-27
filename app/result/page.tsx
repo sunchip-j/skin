@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ResultShare } from "@/features/skin-type/components/result-share";
 import { getSkinTypeCards } from "@/features/skin-type/data/skin-type-info";
+import { getSkinTypeCareItems } from "@/features/skin-type/data/skin-type-care";
 import { readSkinResultFromSession } from "@/features/skin-type/result-session";
 import {
   DIMENSION_KEYS,
@@ -19,11 +20,6 @@ type DimensionDisplay = {
   rightEn: string;
   rightKo: string;
   rightCode: string;
-};
-
-type BasicCareItem = {
-  title: string;
-  description: string;
 };
 
 const DIMENSION_DISPLAY: Record<DimensionKey, DimensionDisplay> = {
@@ -68,58 +64,6 @@ const iconStyles = [
   { bg: "bg-drnt-400", text: "text-[#EAF3DE]" },
 ];
 
-function getBasicCareItems(code: string): BasicCareItem[] {
-  const isDry = code.includes("D");
-  const isOily = code.includes("O");
-  const isSensitive = code.includes("S");
-  const isPigmented = code.includes("P");
-  const isNonPigmented = code.includes("N");
-  const isWrinkled = code.includes("W");
-
-  const tips: BasicCareItem[] = [
-    {
-      title: "순한 세안",
-      description: isSensitive
-        ? "자극을 줄이는 순한 세안이 좋아요."
-        : isDry
-          ? "세안 후 당김이 적은 순한 세안이 좋아요."
-          : "유분과 노폐물을 가볍게 씻어내는 세안이 좋아요.",
-    },
-    {
-      title: isDry
-        ? "충분한 보습"
-        : isOily
-          ? "가벼운 보습"
-          : "균형 있는 보습",
-      description: isDry
-        ? "수분과 유분을 보완해 건조함을 줄여주세요."
-        : isOily
-          ? "무거운 유분감보다 산뜻한 보습이 좋아요."
-          : "피부가 편안한 수준의 보습이 좋아요.",
-    },
-    {
-      title: "자외선 차단",
-      description:
-        isPigmented && isWrinkled
-          ? "색소 흔적과 탄력 저하를 줄이도록 매일 보호해 주세요."
-          : isPigmented
-            ? "색소 흔적이 짙어지지 않도록 매일 보호해 주세요."
-            : isWrinkled
-              ? "탄력 저하를 줄이도록 매일 보호해 주세요."
-              : "매일 자외선 차단으로 피부를 보호해 주세요.",
-    },
-  ];
-
-  if (isNonPigmented) {
-    tips.push({
-      title: "탄력 예방",
-      description: "색소 케어보다 탄력 저하를 미리 살펴주세요.",
-    });
-  }
-
-  return tips;
-}
-
 export function SkinTypeResultContent({
   result,
   productHref = "/play/skin-type/products",
@@ -131,7 +75,7 @@ export function SkinTypeResultContent({
     "";
   const skinTypeCards = getSkinTypeCards(result.code);
 
-  const basicCareItems = getBasicCareItems(result.code);
+  const basicCareItems = getSkinTypeCareItems(result.code);
   return (
     <main className="flex min-h-screen justify-center bg-[linear-gradient(180deg,#f7fbf8_0%,#eef7f4_100%)] px-4 py-5 text-slate-900">
       <section className="w-full max-w-lg overflow-hidden rounded-[28px] border border-emerald-100 bg-white shadow-[0_18px_44px_rgba(15,118,110,0.10)]">
@@ -183,9 +127,6 @@ export function SkinTypeResultContent({
                     {card.description}
                   </p>
 
-                  <p className="mt-1 text-sm font-medium leading-6 text-emerald-700">
-                    {card.tip}
-                  </p>
                 </div>
               </div>
             ))}
@@ -315,14 +256,14 @@ export function SkinTypeResultContent({
             </h3>
 
             <p className="mt-2 text-[0.8125rem] font-medium text-slate-500">
-              {result.code} 타입을 위한 제품이에요
+              {result.code} 피부 특성을 고려한 제품을 확인해보세요.
             </p>
 
             <Link
               href={productHref}
               className="mt-4 flex h-[3.5rem] w-full items-center justify-center rounded-[18px] bg-emerald-600 text-base font-bold text-white shadow-[0_10px_24px_rgba(5,150,105,0.18)] transition hover:bg-emerald-500"
             >
-              맞춤 제품 보기
+              추천 제품 보기
               <span aria-hidden="true" className="ml-1.5">
                 →
               </span>
@@ -342,9 +283,9 @@ export function SkinTypeResultContent({
         <footer className="border-t border-slate-100 px-5 pb-6 pt-6 sm:px-7">
           <Link
             href="/"
-            className="flex h-12 w-full items-center justify-center rounded-2xl border border-slate-200 bg-white text-sm font-semibold text-slate-700 transition hover:bg-slate-50"
+            className="mx-auto flex h-10 w-fit items-center justify-center px-4 text-sm font-semibold text-slate-500 transition hover:text-emerald-700"
           >
-            처음부터 다시 하기
+            다시 검사하기
           </Link>
 
           <p className="mx-auto mt-4 max-w-sm text-center text-[0.68rem] font-medium leading-5 text-slate-400">
