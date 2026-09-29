@@ -6,6 +6,7 @@ import { TestRunner } from "@/features/skin-type/components/test-runner";
 export const metadata: Metadata = {
   title: "피부 타입 설문",
   description: "바우만 피부 타입 설문을 진행합니다.",
+  robots: { index: false, follow: true },
 };
 
 export default function SkinTypeSurveyPage() {
