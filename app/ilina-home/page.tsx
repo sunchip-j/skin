@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 const SKIN_SERVICE_URL = "https://skin.ilina.kr";
 const PRIVACY_URL = `${SKIN_SERVICE_URL}/privacy`;
-const CONTACT_EMAIL = "like4m@gmail.com";
+const CONTACT_EMAIL = "do.il2na@gmail.com";
 
 export default function IlinaHomePage() {
   return (

@@ -5,5 +5,5 @@ export const siteConfig = {
   name: "ILINA",
   serviceName: "ILINA 피부타입",
   url: "https://skin.ilina.kr",
-  privacyContactEmail: configuredPrivacyContact || "like4m@gmail.com",
+  privacyContactEmail: configuredPrivacyContact || "do.il2na@gmail.com",
 } as const;
