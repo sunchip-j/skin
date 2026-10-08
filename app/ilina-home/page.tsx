@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -54,12 +55,70 @@ export default function IlinaHomePage() {
         <p className="mt-3 text-xs leading-6 text-slate-500">검사와 가이드는 ILINA 피부타입 서비스(skin.ilina.kr)에서 이용합니다.</p>
       </section>
 
-      <section aria-labelledby="usage-title" className="border-t border-emerald-100 pt-10">
+      <section aria-labelledby="usage-title" className="border-t border-emerald-100 py-10">
         <h2 id="usage-title" className="text-2xl font-black tracking-tight">결과를 일상의 관리 기준으로 활용하기</h2>
         <div className="mt-6 space-y-7 text-base leading-8 text-slate-600">
           <div><h3 className="mb-2 text-lg font-bold text-slate-900">유형과 실제 경험을 함께 살펴보세요</h3><p>네 글자만 기억하기보다 어떤 문항에서 당김이나 자극을 떠올렸는지 돌아보세요. 얼굴 부위별 상태, 계절, 최근 바꾼 제품에 따라 체감이 다를 수 있습니다. 결과 설명과 자신의 경험이 다르면 유형에 자신을 맞추기보다 현재 불편한 점을 먼저 정리하는 데 활용하세요.</p></div>
           <div><h3 className="mb-2 text-lg font-bold text-slate-900">관리에서 먼저 살펴볼 한 가지를 정하세요</h3><p>세안 뒤 당김이 주된 고민인지, 새로운 제품을 쓸 때의 반응이 고민인지 구분하면 관리 방향을 생각하기 쉽습니다. 지금 사용하는 세안제·보습제·자외선 차단제를 돌아보고, 제품을 고를 때는 유형뿐 아니라 성분, 사용감, 기존 제품과의 조합을 함께 확인하세요. 추천 목록은 선택을 위한 참고 자료입니다.</p></div>
           <div><h3 className="mb-2 text-lg font-bold text-slate-900">변화는 비교할 수 있는 만큼씩 살펴보세요</h3><p>여러 제품을 동시에 바꾸면 어떤 변화가 영향을 주었는지 구분하기 어렵습니다. 바꾼 항목과 사용 후 느낀 점을 따로 기록하면 다음 선택에 참고할 수 있습니다. 지속적인 불편이나 갑작스러운 변화가 있다면 온라인 유형 설명만으로 판단하지 말고 의료 전문가와 상담하세요.</p></div>
+        </div>
+      </section>
+
+      <section aria-labelledby="articles-title" className="border-t border-emerald-100 pt-10">
+        <p className="text-xs font-bold tracking-widest text-emerald-700">가이드 &amp; 제작 이야기</p>
+        <h2 id="articles-title" className="mt-3 text-2xl font-black tracking-tight">피부를 더 깊이 이해하는 글</h2>
+        <p className="mt-4 text-base leading-8 text-slate-600">
+          단순한 점수 확인을 넘어, 자신의 피부를 다각도에서 관찰하고 일상 루틴을 정비하는 데 도움이 되는 안내 글입니다.
+        </p>
+
+        <div className="mt-6 space-y-4">
+          <Link
+            href="/guides/four-dimensions"
+            className="block rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:border-emerald-200 hover:shadow-md"
+          >
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <span className="text-xs font-bold uppercase tracking-widest text-emerald-700">피부 가이드</span>
+              <span className="text-xs font-semibold text-slate-400">읽어보기 →</span>
+            </div>
+            <h3 className="mt-2 text-lg font-bold text-slate-900">
+              피부타입을 결정하는 4가지 기준: 건성·지성 너머의 입체적 분류
+            </h3>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              유수분뿐 아니라 자극 반응성, 색소 침착, 탄력 경향까지. 피부를 4개 축으로 나누어 입체적으로 바라보고 일상에서 관찰하는 방법을 설명합니다.
+            </p>
+          </Link>
+
+          <Link
+            href="/guides/how-to-use-results"
+            className="block rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:border-emerald-200 hover:shadow-md"
+          >
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <span className="text-xs font-bold uppercase tracking-widest text-emerald-700">피부 가이드</span>
+              <span className="text-xs font-semibold text-slate-400">읽어보기 →</span>
+            </div>
+            <h3 className="mt-2 text-lg font-bold text-slate-900">
+              피부타입 결과를 일상의 스킨케어 기준으로 활용하는 5가지 원칙
+            </h3>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              결과 코드를 화장품 과소비로 연결하지 않고, 피부 체질(Type)과 일시적 컨디션(Condition)을 구분하며 관리 우선순위를 정하는 실천 수칙을 다룹니다.
+            </p>
+          </Link>
+
+          <Link
+            href="/story/why-we-built-skin-type"
+            className="block rounded-2xl border border-slate-100 bg-white p-6 shadow-sm transition hover:border-emerald-200 hover:shadow-md"
+          >
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <span className="text-xs font-bold uppercase tracking-widest text-emerald-700">제작 이야기</span>
+              <span className="text-xs font-semibold text-slate-400">읽어보기 →</span>
+            </div>
+            <h3 className="mt-2 text-lg font-bold text-slate-900">
+              ILINA가 로그인 없는 33문항 피부타입 서비스를 만든 이유
+            </h3>
+            <p className="mt-2 text-sm leading-7 text-slate-600">
+              회원가입과 서버 데이터베이스 없이 브라우저 내 계산 방식으로 33문항 피부타입 설문을 직접 기획하고 구현한 기술적 배경과 철학을 나눕니다.
+            </p>
+          </Link>
         </div>
       </section>
     </main>

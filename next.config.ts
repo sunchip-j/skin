@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
         ["/", "/ilina-home"],
         ["/about", "/ilina-home/about"],
         ["/privacy", "/ilina-home/privacy"],
+        ["/guides/four-dimensions", "/ilina-home/guides/four-dimensions"],
+        ["/guides/how-to-use-results", "/ilina-home/guides/how-to-use-results"],
+        ["/story/why-we-built-skin-type", "/ilina-home/story/why-we-built-skin-type"],
         ["/robots.txt", "/ilina-home/robots.txt"],
         ["/sitemap.xml", "/ilina-home/sitemap.xml"],
       ].map(([source, destination]) => ({
