@@ -4,6 +4,7 @@ import { ContentSection, ContentShell } from "@/app/components/content-shell";
 import { SKIN_TYPE_INFOS } from "@/features/skin-type/data/skin-type-info";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://skin.ilina.kr/guide" },
   title: "피부 타입 가이드 | ILINA",
   description: "건성·지성, 민감성·저항성, 색소성·비색소성, 주름형·탄력형의 의미와 16가지 피부 타입을 알아보세요.",
 };

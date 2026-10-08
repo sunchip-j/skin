@@ -1,8 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { SiteFooter } from "@/app/components/site-footer";
 import "./globals.css";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.url),
   title: {
     default: "Modified Baumann SKIN TYPE",
     template: "%s",

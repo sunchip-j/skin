@@ -3,6 +3,7 @@ import Link from "next/link";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://skin.ilina.kr/privacy" },
   title: "개인정보처리방침 | ILINA",
   description: "ILINA 피부타입 서비스의 개인정보처리방침입니다.",
 };

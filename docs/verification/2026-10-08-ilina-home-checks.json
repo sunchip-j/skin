@@ -1,0 +1,498 @@
+[
+  {
+    "check": "ilina.kr/ 200",
+    "pass": true
+  },
+  {
+    "check": "ilina.kr/ canonical",
+    "pass": true
+  },
+  {
+    "check": "ilina.kr/about 200",
+    "pass": true
+  },
+  {
+    "check": "ilina.kr/about canonical",
+    "pass": true
+  },
+  {
+    "check": "ilina.kr/privacy 200",
+    "pass": true
+  },
+  {
+    "check": "ilina.kr/privacy canonical",
+    "pass": true
+  },
+  {
+    "check": "ilina.kr/robots.txt 200",
+    "pass": true
+  },
+  {
+    "check": "ilina.kr robots sitemap",
+    "pass": true
+  },
+  {
+    "check": "ilina.kr/sitemap.xml 200",
+    "pass": true
+  },
+  {
+    "check": "ilina.kr sitemap domain and count",
+    "pass": true
+  },
+  {
+    "check": "ilina.kr/ads.txt 200",
+    "pass": true
+  },
+  {
+    "check": "skin.ilina.kr/ 200",
+    "pass": true
+  },
+  {
+    "check": "skin.ilina.kr/ canonical",
+    "pass": true
+  },
+  {
+    "check": "skin.ilina.kr/about 200",
+    "pass": true
+  },
+  {
+    "check": "skin.ilina.kr/about canonical",
+    "pass": true
+  },
+  {
+    "check": "skin.ilina.kr/privacy 200",
+    "pass": true
+  },
+  {
+    "check": "skin.ilina.kr/privacy canonical",
+    "pass": true
+  },
+  {
+    "check": "skin.ilina.kr/robots.txt 200",
+    "pass": true
+  },
+  {
+    "check": "skin.ilina.kr robots sitemap",
+    "pass": true
+  },
+  {
+    "check": "skin.ilina.kr/sitemap.xml 200",
+    "pass": true
+  },
+  {
+    "check": "skin.ilina.kr sitemap domain and count",
+    "pass": true
+  },
+  {
+    "check": "skin.ilina.kr/ads.txt 200",
+    "pass": true
+  },
+  {
+    "check": "root redirect /guide",
+    "pass": true
+  },
+  {
+    "check": "skin route retained /guide",
+    "pass": true
+  },
+  {
+    "check": "root redirect /survey",
+    "pass": true
+  },
+  {
+    "check": "skin route retained /survey",
+    "pass": true
+  },
+  {
+    "check": "root redirect /result",
+    "pass": true
+  },
+  {
+    "check": "skin route retained /result",
+    "pass": true
+  },
+  {
+    "check": "root redirect /skin-type/dsnt",
+    "pass": true
+  },
+  {
+    "check": "skin route retained /skin-type/dsnt",
+    "pass": true
+  },
+  {
+    "check": "root redirect /skin-type/dsnt/products",
+    "pass": true
+  },
+  {
+    "check": "skin route retained /skin-type/dsnt/products",
+    "pass": true
+  },
+  {
+    "check": "root redirect /play/skin-type",
+    "pass": true
+  },
+  {
+    "check": "skin route retained /play/skin-type",
+    "pass": true
+  },
+  {
+    "check": "root redirect /play/skin-type/survey",
+    "pass": true
+  },
+  {
+    "check": "skin route retained /play/skin-type/survey",
+    "pass": true
+  },
+  {
+    "check": "root redirect /play/skin-type/products",
+    "pass": true
+  },
+  {
+    "check": "skin route retained /play/skin-type/products",
+    "pass": true
+  },
+  {
+    "check": "root redirect /dev/result/dsnt",
+    "pass": true
+  },
+  {
+    "check": "skin route retained /dev/result/dsnt",
+    "pass": true
+  },
+  {
+    "check": "internal route redirect ilina.kr/ilina-home",
+    "pass": true
+  },
+  {
+    "check": "internal route redirect ilina.kr/ilina-home/about",
+    "pass": true
+  },
+  {
+    "check": "internal route redirect ilina.kr/ilina-home/privacy",
+    "pass": true
+  },
+  {
+    "check": "internal route redirect ilina.kr/ilina-home/sitemap.xml",
+    "pass": true
+  },
+  {
+    "check": "internal route redirect ilina.kr/ilina-home/robots.txt",
+    "pass": true
+  },
+  {
+    "check": "internal route redirect skin.ilina.kr/ilina-home",
+    "pass": true
+  },
+  {
+    "check": "internal route redirect skin.ilina.kr/ilina-home/about",
+    "pass": true
+  },
+  {
+    "check": "internal route redirect skin.ilina.kr/ilina-home/privacy",
+    "pass": true
+  },
+  {
+    "check": "internal route redirect skin.ilina.kr/ilina-home/sitemap.xml",
+    "pass": true
+  },
+  {
+    "check": "internal route redirect skin.ilina.kr/ilina-home/robots.txt",
+    "pass": true
+  },
+  {
+    "check": "internal route redirect localhost/ilina-home",
+    "pass": true
+  },
+  {
+    "check": "internal route redirect localhost/ilina-home/about",
+    "pass": true
+  },
+  {
+    "check": "internal route redirect localhost/ilina-home/privacy",
+    "pass": true
+  },
+  {
+    "check": "internal route redirect localhost/ilina-home/sitemap.xml",
+    "pass": true
+  },
+  {
+    "check": "internal route redirect localhost/ilina-home/robots.txt",
+    "pass": true
+  },
+  {
+    "check": "16 type canonical /skin-type/dspw",
+    "pass": true
+  },
+  {
+    "check": "16 type canonical /skin-type/dspt",
+    "pass": true
+  },
+  {
+    "check": "16 type canonical /skin-type/dsnw",
+    "pass": true
+  },
+  {
+    "check": "16 type canonical /skin-type/dsnt",
+    "pass": true
+  },
+  {
+    "check": "16 type canonical /skin-type/drpw",
+    "pass": true
+  },
+  {
+    "check": "16 type canonical /skin-type/drpt",
+    "pass": true
+  },
+  {
+    "check": "16 type canonical /skin-type/drnw",
+    "pass": true
+  },
+  {
+    "check": "16 type canonical /skin-type/drnt",
+    "pass": true
+  },
+  {
+    "check": "16 type canonical /skin-type/ospw",
+    "pass": true
+  },
+  {
+    "check": "16 type canonical /skin-type/ospt",
+    "pass": true
+  },
+  {
+    "check": "16 type canonical /skin-type/osnw",
+    "pass": true
+  },
+  {
+    "check": "16 type canonical /skin-type/osnt",
+    "pass": true
+  },
+  {
+    "check": "16 type canonical /skin-type/orpw",
+    "pass": true
+  },
+  {
+    "check": "16 type canonical /skin-type/orpt",
+    "pass": true
+  },
+  {
+    "check": "16 type canonical /skin-type/ornw",
+    "pass": true
+  },
+  {
+    "check": "16 type canonical /skin-type/ornt",
+    "pass": true
+  },
+  {
+    "check": "dev noindex /dev",
+    "pass": true
+  },
+  {
+    "check": "dev noindex /dev/result",
+    "pass": true
+  },
+  {
+    "check": "dev noindex /dev/result/dsnt",
+    "pass": true
+  },
+  {
+    "check": "www redirect retains query",
+    "pass": true
+  },
+  {
+    "check": "root unknown 404",
+    "pass": true
+  },
+  {
+    "check": "Host with port",
+    "pass": true
+  },
+  {
+    "check": "unreleased information absent /",
+    "pass": true
+  },
+  {
+    "check": "unreleased information absent /about",
+    "pass": true
+  },
+  {
+    "check": "unreleased information absent /privacy",
+    "pass": true
+  },
+  {
+    "check": "no horizontal overflow 320 /",
+    "pass": true
+  },
+  {
+    "check": "skin footer hidden 320 /",
+    "pass": true
+  },
+  {
+    "check": "one h1 320 /",
+    "pass": true
+  },
+  {
+    "check": "no horizontal overflow 320 /about",
+    "pass": true
+  },
+  {
+    "check": "skin footer hidden 320 /about",
+    "pass": true
+  },
+  {
+    "check": "one h1 320 /about",
+    "pass": true
+  },
+  {
+    "check": "no horizontal overflow 320 /privacy",
+    "pass": true
+  },
+  {
+    "check": "skin footer hidden 320 /privacy",
+    "pass": true
+  },
+  {
+    "check": "one h1 320 /privacy",
+    "pass": true
+  },
+  {
+    "check": "no horizontal overflow 390 /",
+    "pass": true
+  },
+  {
+    "check": "skin footer hidden 390 /",
+    "pass": true
+  },
+  {
+    "check": "one h1 390 /",
+    "pass": true
+  },
+  {
+    "check": "no horizontal overflow 390 /about",
+    "pass": true
+  },
+  {
+    "check": "skin footer hidden 390 /about",
+    "pass": true
+  },
+  {
+    "check": "one h1 390 /about",
+    "pass": true
+  },
+  {
+    "check": "no horizontal overflow 390 /privacy",
+    "pass": true
+  },
+  {
+    "check": "skin footer hidden 390 /privacy",
+    "pass": true
+  },
+  {
+    "check": "one h1 390 /privacy",
+    "pass": true
+  },
+  {
+    "check": "no horizontal overflow 768 /",
+    "pass": true
+  },
+  {
+    "check": "skin footer hidden 768 /",
+    "pass": true
+  },
+  {
+    "check": "one h1 768 /",
+    "pass": true
+  },
+  {
+    "check": "no horizontal overflow 768 /about",
+    "pass": true
+  },
+  {
+    "check": "skin footer hidden 768 /about",
+    "pass": true
+  },
+  {
+    "check": "one h1 768 /about",
+    "pass": true
+  },
+  {
+    "check": "no horizontal overflow 768 /privacy",
+    "pass": true
+  },
+  {
+    "check": "skin footer hidden 768 /privacy",
+    "pass": true
+  },
+  {
+    "check": "one h1 768 /privacy",
+    "pass": true
+  },
+  {
+    "check": "no horizontal overflow 1440 /",
+    "pass": true
+  },
+  {
+    "check": "skin footer hidden 1440 /",
+    "pass": true
+  },
+  {
+    "check": "one h1 1440 /",
+    "pass": true
+  },
+  {
+    "check": "no horizontal overflow 1440 /about",
+    "pass": true
+  },
+  {
+    "check": "skin footer hidden 1440 /about",
+    "pass": true
+  },
+  {
+    "check": "one h1 1440 /about",
+    "pass": true
+  },
+  {
+    "check": "no horizontal overflow 1440 /privacy",
+    "pass": true
+  },
+  {
+    "check": "skin footer hidden 1440 /privacy",
+    "pass": true
+  },
+  {
+    "check": "one h1 1440 /privacy",
+    "pass": true
+  },
+  {
+    "check": "main CTA URLs",
+    "pass": true
+  },
+  {
+    "check": "brand about internal navigation",
+    "pass": true
+  },
+  {
+    "check": "brand privacy internal navigation",
+    "pass": true
+  },
+  {
+    "check": "contact link",
+    "pass": true
+  },
+  {
+    "check": "33 questions answered / result submit enabled",
+    "pass": true
+  },
+  {
+    "check": "skin result session stored",
+    "pass": true
+  },
+  {
+    "check": "skin result restored after reload",
+    "pass": true
+  },
+  {
+    "check": "no browser runtime exceptions",
+    "pass": true
+  }
+]

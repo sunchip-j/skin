@@ -4,26 +4,25 @@ const projectRoot = process.cwd();
 
 const nextConfig: NextConfig = {
   outputFileTracingRoot: projectRoot,
-  turbopack: {
-    root: projectRoot,
-  },
   async rewrites() {
     return {
       beforeFiles: [
-        {
-          source: "/",
-          destination: "/ilina-home",
-          has: [
-            {
-              type: "host",
-              value: "ilina.kr",
-            },
-          ],
-        },
-      ],
+        ["/", "/ilina-home"],
+        ["/about", "/ilina-home/about"],
+        ["/privacy", "/ilina-home/privacy"],
+        ["/robots.txt", "/ilina-home/robots.txt"],
+        ["/sitemap.xml", "/ilina-home/sitemap.xml"],
+      ].map(([source, destination]) => ({
+        source,
+        destination,
+        has: [{ type: "host" as const, value: "ilina.kr" }],
+      })),
       afterFiles: [],
       fallback: [],
     };
+  },
+  turbopack: {
+    root: projectRoot,
   },
 };
 

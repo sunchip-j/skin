@@ -4,6 +4,7 @@ import { ContentSection, ContentShell } from "@/app/components/content-shell";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "https://skin.ilina.kr/about" },
   title: "서비스와 콘텐츠 소개 | ILINA",
   description: "ILINA 피부 타입 서비스의 목적, 콘텐츠 작성 원칙, 정보의 한계와 문의 방법을 안내합니다.",
 };
