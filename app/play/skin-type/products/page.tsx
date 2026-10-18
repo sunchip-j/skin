@@ -15,7 +15,7 @@ export function SkinTypeProductsContent({
     <main className="min-h-screen bg-[linear-gradient(180deg,#f7fbf8_0%,#eef7f4_100%)] px-4 py-5 text-slate-900">
       <section className="mx-auto w-full max-w-lg space-y-5">
         <header className="rounded-[28px] border border-emerald-100 bg-white px-5 py-6 shadow-[0_18px_44px_rgba(15,118,110,0.10)]">
-          <ResultBackButton />
+          <ResultBackButton skinType={skinType} />
 
           <p className="mt-6 text-[0.68rem] font-black uppercase tracking-[0.24em] text-emerald-600">
             BAUMANN SKIN TYPE
