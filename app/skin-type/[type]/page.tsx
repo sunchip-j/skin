@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { serviceMetadata } from "@/config/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ContentSection, ContentShell } from "@/app/components/content-shell";
@@ -22,11 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const code = parseType((await params).type);
   const result = code ? skinResults.find((item) => item.code === code) : null;
   if (!code || !result) return { title: "피부 타입 정보 | ILINA" };
-  return {
-    title: `${code} 피부 타입 특징과 관리법 | ILINA`,
-    description: result.summary ?? `${code} 피부 타입의 특징, 관리 우선순위와 주의사항을 확인하세요.`,
-    alternates: { canonical: `/skin-type/${code.toLowerCase()}` },
-  };
+  return serviceMetadata(`/skin-type/${code.toLowerCase()}`, `${code} 피부 타입 특징과 관리법 | ILINA`, result.summary ?? `${code} 피부 타입의 특징, 관리 우선순위와 주의사항을 확인하세요.`);
 }
 
 export default async function SkinTypeInfoPage({ params }: PageProps) {

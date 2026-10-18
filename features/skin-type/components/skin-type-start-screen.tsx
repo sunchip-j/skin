@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 const SURVEY_AXES = [
   {
@@ -73,8 +73,39 @@ function ClockIcon() {
   );
 }
 
-export function SkinTypeStartScreen() {
+export function SkinTypeStartScreen({ accessibleDialog = false }: { accessibleDialog?: boolean }) {
   const [isInfoOpen, setIsInfoOpen] = useState(false);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const dialogTitleId = useId();
+
+  useEffect(() => {
+    if (!accessibleDialog || !isInfoOpen) return;
+    const previousFocus = document.activeElement as HTMLElement | null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const dialog = dialogRef.current;
+    dialog?.querySelector<HTMLButtonElement>('button[aria-label="닫기"]')?.focus();
+    function handleKey(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setIsInfoOpen(false);
+      }
+      if (event.key === "Tab") {
+        const buttons = dialog?.querySelectorAll<HTMLButtonElement>('button:not([tabindex="-1"])');
+        if (!buttons?.length) return;
+        const first = buttons[0];
+        const last = buttons[buttons.length - 1];
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+        else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+      }
+    }
+    dialog?.addEventListener("keydown", handleKey);
+    return () => {
+      dialog?.removeEventListener("keydown", handleKey);
+      document.body.style.overflow = previousOverflow;
+      previousFocus?.focus();
+    };
+  }, [accessibleDialog, isInfoOpen]);
 
   return (
     <main className="min-h-screen overflow-x-hidden bg-[#f7fbf8] text-[#101828]">
@@ -205,12 +236,15 @@ export function SkinTypeStartScreen() {
       {/* Baumann 설명 모달 */}
       {isInfoOpen ? (
         <div
+          ref={dialogRef}
+          aria-labelledby={accessibleDialog ? dialogTitleId : undefined}
           aria-modal="true"
           className="fixed inset-0 z-30 flex items-end justify-center bg-slate-950/35 px-3"
           role="dialog"
         >
           <button
             aria-label="바우만 피부 타입 안내 닫기"
+            tabIndex={accessibleDialog ? -1 : undefined}
             className="absolute inset-0 cursor-default"
             type="button"
             onClick={() => setIsInfoOpen(false)}
@@ -225,7 +259,7 @@ export function SkinTypeStartScreen() {
                   BAUMANN SKIN TYPE SYSTEM
                 </p>
 
-                <h2 className="mt-2 text-xl font-black tracking-tight text-slate-950">
+                <h2 id={accessibleDialog ? dialogTitleId : undefined} className="mt-2 text-xl font-black tracking-tight text-slate-950">
                   바우만 피부 타입이란?
                 </h2>
               </div>

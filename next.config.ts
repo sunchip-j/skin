@@ -7,7 +7,11 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return {
       beforeFiles: [
-        ["/", "/ilina-home"],
+        // Root-only editorial navigation, reusing the existing service screens.
+        ["/", "/service-entry"],
+        ["/guide", "/service-entry/guide"],
+        // Share the service homepage; preserve the brand hub at /company.
+        ["/company", "/ilina-home"],
         ["/about", "/ilina-home/about"],
         ["/privacy", "/ilina-home/privacy"],
         ["/guides/four-dimensions", "/ilina-home/guides/four-dimensions"],

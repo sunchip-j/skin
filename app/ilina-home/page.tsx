@@ -3,11 +3,11 @@ import Link from "next/link";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
-  alternates: { canonical: siteConfig.brandUrl },
+  alternates: { canonical: `${siteConfig.brandUrl}/company` },
   openGraph: {
     title: "ILINA | 일상에 도움이 되는 웹서비스",
     description: "직접 기획하고 운영하는 ILINA의 웹서비스와 피부타입 결과 활용 방법을 소개합니다.",
-    url: siteConfig.brandUrl,
+    url: `${siteConfig.brandUrl}/company`,
     siteName: "ILINA",
     locale: "ko_KR",
     type: "website",
@@ -49,10 +49,10 @@ export default function IlinaHomePage() {
         <p className="mt-5 text-base leading-8 text-slate-600">검사 결과에서는 내 유형과 네 축의 점수, 유형의 주요 특징, 관리 시 참고할 점을 확인할 수 있습니다. 유형에 맞춘 제품 목록도 살펴볼 수 있지만, 개별 제품이 자신에게 맞는지는 실제 반응과 사용 조건을 함께 고려해야 합니다.</p>
         <aside className="mt-6 border-l-2 border-emerald-300 pl-4 text-sm leading-7 text-slate-600">이 서비스는 자기 응답에 기반한 참고용 정보입니다. 의료적 진단이나 처방을 제공하지 않으며, 피부 질환의 유무나 특정 제품의 효과를 판정하지 않습니다.</aside>
         <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-          <a href={`${siteConfig.url}/survey`} className="inline-flex min-h-12 items-center justify-center rounded-xl bg-emerald-700 px-6 text-sm font-bold text-white hover:bg-emerald-800">피부타입 검사 시작</a>
-          <a href={`${siteConfig.url}/guide`} className="inline-flex min-h-12 items-center justify-center rounded-xl border border-emerald-200 px-6 text-sm font-bold text-emerald-800 hover:bg-emerald-50">피부타입 가이드 보기</a>
+          <a href="/survey" className="inline-flex min-h-12 items-center justify-center rounded-xl bg-emerald-700 px-6 text-sm font-bold text-white hover:bg-emerald-800">피부타입 검사 시작</a>
+          <a href="/guide" className="inline-flex min-h-12 items-center justify-center rounded-xl border border-emerald-200 px-6 text-sm font-bold text-emerald-800 hover:bg-emerald-50">피부타입 가이드 보기</a>
         </div>
-        <p className="mt-3 text-xs leading-6 text-slate-500">검사와 가이드는 ILINA 피부타입 서비스(skin.ilina.kr)에서 이용합니다.</p>
+        <p className="mt-3 text-xs leading-6 text-slate-500">검사와 가이드는 이 도메인에서 바로 이용할 수 있으며, 기존 skin.ilina.kr 서비스도 계속 제공됩니다.</p>
       </section>
 
       <section aria-labelledby="usage-title" className="border-t border-emerald-100 py-10">

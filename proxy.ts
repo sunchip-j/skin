@@ -4,9 +4,14 @@ import { siteConfig } from "@/config/site";
 export function proxy(request: NextRequest) {
   const host = request.headers.get("host")?.split(":")[0].toLowerCase();
   const path = request.nextUrl.pathname;
+  if (path === "/service-entry" || path.startsWith("/service-entry/")) {
+    const publicPath = path.slice("/service-entry".length) || "/";
+    return NextResponse.redirect(new URL(publicPath + request.nextUrl.search, siteConfig.brandUrl), 308);
+  }
   // Internal brand paths are never public URLs, on either domain.
   if (path === "/ilina-home" || path.startsWith("/ilina-home/")) {
-    const suffix = path.slice("/ilina-home".length) || "/";
+    const isBrandHost = host === "ilina.kr" || host === "www.ilina.kr";
+    const suffix = path.slice("/ilina-home".length) || (isBrandHost ? "/company" : "/");
     return NextResponse.redirect(new URL(suffix + request.nextUrl.search, siteConfig.brandUrl), 308);
   }
   if (host === "www.ilina.kr") {
@@ -14,10 +19,12 @@ export function proxy(request: NextRequest) {
   }
   if (host !== "ilina.kr") return NextResponse.next();
 
-  // Keep skin content and functional routes on their existing domain.
-  if (/^\/(guide|survey|result|skin-type|play|dev)(\/|$)/.test(path)) {
+  // Public service routes use the shared app tree and keep the same origin.
+  // Developer tools retain their existing routing.
+  if (/^\/dev(\/|$)/.test(path)) {
     return NextResponse.redirect(new URL(path + request.nextUrl.search, siteConfig.url), 308);
   }
+  // Canonical/OG now live in shared HTML metadata; no conflicting HTTP Link.
   return NextResponse.next();
 }
 

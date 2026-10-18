@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function HowToUseResultsGuidePage() {
   return (
-    <article className="py-12 sm:py-16">
+    <main className="py-12 sm:py-16">
       <header className="border-b border-emerald-100 pb-8">
         <p className="text-xs font-bold tracking-widest text-emerald-700">
           피부 가이드
@@ -273,7 +273,7 @@ export default function HowToUseResultsGuidePage() {
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
           <a
-            href={`${siteConfig.url}/survey`}
+            href="/survey"
             className="inline-flex min-h-11 items-center justify-center rounded-xl bg-emerald-700 px-5 text-sm font-bold text-white hover:bg-emerald-800"
           >
             피부타입 설문 시작하기
@@ -310,6 +310,6 @@ export default function HowToUseResultsGuidePage() {
           </Link>
         </div>
       </nav>
-    </article>
+    </main>
   );
 }

@@ -1,10 +1,7 @@
-import type { Metadata } from "next";
+import { serviceMetadata } from "@/config/seo";
 import { SkinTypeStartScreen } from "@/features/skin-type/components/skin-type-start-screen";
 
-export const metadata: Metadata = {
-  title: "바우만 피부 타입 테스트",
-  description: "33문항으로 알아보는 나의 바우만 피부 타입",
-};
+export const metadata = serviceMetadata("/", "바우만 피부 타입 테스트", "33문항으로 알아보는 나의 바우만 피부 타입");
 
 export default function SkinTypePage() {
   return <SkinTypeStartScreen />;

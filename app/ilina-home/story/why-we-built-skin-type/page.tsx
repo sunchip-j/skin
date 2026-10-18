@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "ILINA가 로그인 없는 33문항 피부타입 서비스를 만든 이유 | ILINA",
     description:
-      "상업적 마케팅 대신 투명성과 개인정보 보호를 택한 ILINA 피부타입 서비스의 기획 및 개발 이야기입니다.",
+      "33문항 구성, 유형별 콘텐츠와 브라우저 내 계산 방식에 관한 ILINA 피부타입 서비스 제작 이야기입니다.",
     url: `${siteConfig.brandUrl}/story/why-we-built-skin-type`,
     siteName: "ILINA",
     locale: "ko_KR",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 export default function WhyWeBuiltSkinTypeStoryPage() {
   return (
-    <article className="py-12 sm:py-16">
+    <main className="py-12 sm:py-16">
       <header className="border-b border-emerald-100 pb-8">
         <p className="text-xs font-bold tracking-widest text-emerald-700">
           제작 이야기
@@ -75,12 +75,9 @@ export default function WhyWeBuiltSkinTypeStoryPage() {
             2. 33문항: 관찰의 깊이와 이용 편의성의 균형
           </h2>
           <p className="mt-4 text-slate-600">
-            바우만 박사의 원본 설문 문진표는 60문항이 넘는 방대한 질문으로 구성되어
-            있습니다. 의료 기관의 대면 환경에서는 적합하지만, 모바일
-            웹브라우저로 접속한 이용자가 지나치게 많은 문항을 마주할 경우
-            집중도가 떨어져 중도에 포기하기 쉽습니다. 반대로 질문 수를
-            5~10문항으로 과도하게 줄이면 피부를 입체적으로 돌아보는 본래의 장점이
-            사라집니다.
+            ILINA의 웹 설문은 네 가지 특성을 따로 살펴볼 수 있도록 구성했습니다.
+            원본 문진표와 동일한 검사나 의료기관의 진단 도구로 제공하는 것은
+            아니며, 이 서비스의 문항과 배점으로 현재 경험을 정리하는 데 목적이 있습니다.
           </p>
           <p className="mt-3 text-slate-600">
             ILINA는 4개 축의 핵심적인 생리적 관찰 항목을 추려 총 33문항으로
@@ -209,8 +206,9 @@ export default function WhyWeBuiltSkinTypeStoryPage() {
             <li>
               <strong className="text-slate-900">임시 세션 유지:</strong> 브라우저
               탭에서 결과 페이지를 새로고침할 때 결과가 사라지지 않도록, 탭 단위
-              임시 저장소(sessionStorage)에만 점수 요약이 머물며, 탭을 닫으면 완전히
-              소멸합니다.
+              임시 저장소(sessionStorage)에만 점수 요약이 머뭅니다. 일반적으로 탭의
+              세션 동안 유지되지만 브라우저의 탭 복원 기능으로 복구될 수도 있으므로,
+              삭제하려면 브라우저의 사이트 데이터를 지워주세요.
             </li>
           </ul>
           <p className="mt-4 text-slate-600">
@@ -258,7 +256,7 @@ export default function WhyWeBuiltSkinTypeStoryPage() {
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
           <a
-            href={`${siteConfig.url}/survey`}
+            href="/survey"
             className="inline-flex min-h-11 items-center justify-center rounded-xl bg-emerald-700 px-5 text-sm font-bold text-white hover:bg-emerald-800"
           >
             피부타입 설문 시작
@@ -295,6 +293,6 @@ export default function WhyWeBuiltSkinTypeStoryPage() {
           </Link>
         </div>
       </nav>
-    </article>
+    </main>
   );
 }

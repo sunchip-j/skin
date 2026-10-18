@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { serviceMetadata } from "@/config/seo";
 import { notFound } from "next/navigation";
 import { SkinTypeProductsContent } from "@/app/play/skin-type/products/page";
 import type { SkinTypeCode } from "@/features/skin-type/types";
@@ -42,8 +43,5 @@ export async function generateMetadata({
     return { title: "맞춤 제품 추천 | BAUMANN SKIN TYPE" };
   }
 
-  return {
-    title: `${skinType} 맞춤 제품 추천 | BAUMANN SKIN TYPE`,
-    description: `${skinType} 피부 특성을 고려한 기본 스킨케어 루틴과 단계별 추천 제품을 확인해보세요.`,
-  };
+  return serviceMetadata(`/skin-type/${skinType.toLowerCase()}/products`, `${skinType} 맞춤 제품 추천 | BAUMANN SKIN TYPE`, `${skinType} 피부 특성을 고려한 기본 스킨케어 루틴과 단계별 추천 제품을 확인해보세요.`);
 }
