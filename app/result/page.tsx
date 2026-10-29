@@ -283,7 +283,7 @@ export function SkinTypeResultContent({
         <footer className="border-t border-slate-100 px-5 pb-6 pt-6 sm:px-7">
           <Link
             href="/"
-            className="mx-auto flex h-10 w-fit items-center justify-center px-4 text-sm font-semibold text-slate-500 transition hover:text-emerald-700"
+            className="mx-auto flex h-11 w-fit items-center justify-center px-4 text-sm font-semibold text-slate-500 transition hover:text-emerald-700"
           >
             다시 검사하기
           </Link>

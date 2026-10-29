@@ -39,7 +39,7 @@ export function ProductCard({ recommendation }: ProductCardProps) {
               </h3>
             </div>
 
-            <span className="shrink-0 text-[0.65rem] font-bold text-slate-400">
+            <span className="shrink-0 text-xs font-bold text-slate-600">
               {CATEGORY_LABELS[product.category]}
             </span>
           </div>
@@ -49,7 +49,7 @@ export function ProductCard({ recommendation }: ProductCardProps) {
               {product.tags.slice(0, 3).map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full bg-emerald-50 px-2.5 py-1 text-[0.64rem] font-bold text-emerald-700"
+                  className="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-bold text-emerald-700"
                 >
                   {tag}
                 </span>
@@ -68,7 +68,7 @@ export function ProductCard({ recommendation }: ProductCardProps) {
           href={product.oliveYoungUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-3 inline-flex items-center text-xs font-black text-emerald-700 transition hover:text-emerald-600"
+          className="mt-3 inline-flex min-h-11 items-center text-xs font-black text-emerald-700 transition hover:text-emerald-600"
         >
           올리브영에서 제품 보기
           <span aria-hidden="true" className="ml-1">

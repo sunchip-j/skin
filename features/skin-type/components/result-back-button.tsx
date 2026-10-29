@@ -20,7 +20,7 @@ export function ResultBackButton({ skinType }: { skinType: SkinTypeCode }) {
   return (
     <button
       type="button"
-      className="inline-flex items-center text-sm font-black text-slate-500 transition hover:text-emerald-700"
+      className="inline-flex min-h-11 items-center text-sm font-black text-slate-500 transition hover:text-emerald-700"
       onClick={handleReturn}
     >
       <span aria-hidden="true" className="mr-1.5">

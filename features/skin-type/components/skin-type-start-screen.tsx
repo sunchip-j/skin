@@ -113,14 +113,14 @@ export function SkinTypeStartScreen({ accessibleDialog = false }: { accessibleDi
         <div className="px-5 pt-4">
           {/* Hero */}
           <section>
-            <div className="grid grid-cols-[minmax(0,1fr)_2.25rem] items-center gap-3">
+            <div className="grid grid-cols-[minmax(0,1fr)_2.75rem] items-center gap-3">
               <p className="min-w-0 truncate text-[0.69rem] font-black uppercase tracking-[0.2em] text-emerald-700">
                 BAUMANN SKIN TYPE SYSTEM
               </p>
 
               <button
                 aria-label="바우만 피부 타입 안내 열기"
-                className="grid h-9 w-9 shrink-0 place-items-center rounded-full text-slate-500 transition hover:bg-white"
+                className="grid h-11 w-11 shrink-0 place-items-center rounded-full text-slate-500 transition hover:bg-white"
                 type="button"
                 onClick={() => setIsInfoOpen(true)}
               >
@@ -190,7 +190,7 @@ export function SkinTypeStartScreen({ accessibleDialog = false }: { accessibleDi
                     </div>
                   </div>
 
-                  <p className="mt-2 text-xs font-semibold text-slate-400">
+                  <p className="mt-2 text-xs font-semibold leading-5 text-slate-600">
                     {axis.description}
                   </p>
                 </div>
@@ -225,7 +225,7 @@ export function SkinTypeStartScreen({ accessibleDialog = false }: { accessibleDi
               </span>
             </Link>
 
-            <p className="mx-auto mt-3 max-w-[22rem] text-center text-[0.68rem] font-medium leading-5 text-slate-400">
+            <p className="mx-auto mt-3 max-w-[22rem] text-center text-xs font-medium leading-5 text-slate-600">
               피부 특성을 이해하기 위한 참고용 분석이며 의학적 진단을 대체하지
               않습니다.
             </p>
@@ -266,7 +266,7 @@ export function SkinTypeStartScreen({ accessibleDialog = false }: { accessibleDi
 
               <button
                 aria-label="닫기"
-                className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-slate-50 text-lg font-black text-slate-500"
+                className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-slate-50 text-lg font-black text-slate-500"
                 type="button"
                 onClick={() => setIsInfoOpen(false)}
               >

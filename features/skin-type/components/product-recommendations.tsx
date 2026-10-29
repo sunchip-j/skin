@@ -127,7 +127,7 @@ export function ProductRecommendations({
                     <div className="mt-2.5">
                       <button
                         type="button"
-                        className="flex min-h-10 w-full items-center justify-center text-xs font-black text-slate-500 transition hover:text-emerald-700"
+                        className="flex min-h-11 w-full items-center justify-center text-xs font-black text-slate-500 transition hover:text-emerald-700"
                         onClick={() =>
                           setExpandedCategories((current) => ({
                             ...current,
