@@ -54,8 +54,9 @@ export const SKIN_SCORE_THRESHOLDS = DIMENSION_KEYS.reduce((thresholds, key) => 
 }, { ...EMPTY_SCORES });
 
 export const SKIN_MAX_SCORES = DIMENSION_KEYS.reduce((maxScores, key) => {
-  maxScores[key] = Math.max(
-    ...skinDimensionMap[key].thresholds.map((threshold) => threshold.max)
+  maxScores[key] = skinDimensionMap[key].questions.reduce(
+    (total, question) => total + Math.max(...question.choices.map((choice) => choice.score)),
+    0
   );
   return maxScores;
 }, { ...EMPTY_SCORES });
