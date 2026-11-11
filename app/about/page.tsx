@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AssessmentMethod } from "@/app/components/assessment-method";
 import Link from "next/link";
 import { ContentSection, ContentShell } from "@/app/components/content-shell";
 import { siteConfig } from "@/config/site";
@@ -15,6 +16,10 @@ export default function AboutPage() {
       <ContentSection title="서비스의 목적">
         <p>33개 문항에 답하면 건성·지성, 민감성·저항성, 색소성·비색소성, 주름형·탄력형의 네 축을 조합해 16가지 피부 타입 중 하나를 안내합니다.</p>
         <p>결과는 제품을 많이 사용하도록 유도하기 위한 진단이 아니라 세안, 보습, 자외선 차단 등 기본 관리에서 무엇을 우선할지 생각하는 참고 자료입니다.</p>
+      </ContentSection>
+
+      <ContentSection title="문항·배점과 분류의 한계">
+        <AssessmentMethod />
       </ContentSection>
 
       <ContentSection title="콘텐츠 작성과 관리 원칙">

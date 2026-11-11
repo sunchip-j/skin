@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { NeighboringTypes } from "@/features/skin-type/components/neighboring-types";
 import { serviceMetadata } from "@/config/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -54,6 +55,10 @@ export default async function SkinTypeInfoPage({ params }: PageProps) {
             </div>
           ))}
         </div>
+      </ContentSection>
+
+      <ContentSection title="한 글자만 다른 유형과 비교하기">
+        <NeighboringTypes code={code} />
       </ContentSection>
 
       <ContentSection title="주의해서 살펴볼 점">

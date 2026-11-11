@@ -1,11 +1,7 @@
-"use client";
-
-import { useState } from "react";
 import { ProductCard } from "@/features/skin-type/components/product-card";
 import { getRoutineSteps } from "@/features/skin-type/data/skin-type-info";
 import { getRecommendedProductsByCategory } from "@/features/skin-type/lib/product-recommendation";
 import type {
-  ProductCategory,
   SkinTypeCode,
 } from "@/features/skin-type/types";
 
@@ -20,10 +16,6 @@ function getMoreButtonText(categoryLabel: string) {
 export function ProductRecommendations({
   skinType,
 }: ProductRecommendationsProps) {
-  const [expandedCategories, setExpandedCategories] = useState<
-    Partial<Record<ProductCategory, boolean>>
-  >({});
-
   const routineSteps = getRoutineSteps(skinType);
 
   return (
@@ -88,8 +80,6 @@ export function ProductRecommendations({
           const [primaryRecommendation, ...additionalRecommendations] =
             recommendations;
 
-          const isExpanded = Boolean(expandedCategories[step.category]);
-
           return (
             <section
               key={step.category}
@@ -124,37 +114,17 @@ export function ProductRecommendations({
                   <ProductCard recommendation={primaryRecommendation} />
 
                   {additionalRecommendations.length > 0 ? (
-                    <div className="mt-2.5">
-                      <button
-                        type="button"
-                        className="flex min-h-11 w-full items-center justify-center text-xs font-black text-slate-500 transition hover:text-emerald-700"
-                        onClick={() =>
-                          setExpandedCategories((current) => ({
-                            ...current,
-                            [step.category]: !isExpanded,
-                          }))
-                        }
-                      >
-                        {isExpanded
-                          ? "추가 추천 접기"
-                          : getMoreButtonText(step.label)}
-
-                        <span aria-hidden="true" className="ml-1">
-                          {isExpanded ? "⌃" : "›"}
-                        </span>
-                      </button>
-
-                      {isExpanded ? (
-                        <div className="mt-2 space-y-3">
-                          {additionalRecommendations.map((recommendation) => (
-                            <ProductCard
-                              key={recommendation.product.id}
-                              recommendation={recommendation}
-                            />
-                          ))}
-                        </div>
-                      ) : null}
-                    </div>
+                    <details className="group mt-2.5">
+                      <summary className="flex min-h-11 w-full cursor-pointer list-none items-center justify-center text-xs font-black text-slate-600 transition hover:text-emerald-700 focus-visible:outline-2 focus-visible:outline-emerald-700">
+                        <span className="group-open:hidden">{getMoreButtonText(step.label)} ›</span>
+                        <span className="hidden group-open:inline">추가 추천 접기 ⌃</span>
+                      </summary>
+                      <div className="mt-2 space-y-3">
+                        {additionalRecommendations.map((recommendation) => (
+                          <ProductCard key={recommendation.product.id} recommendation={recommendation} />
+                        ))}
+                      </div>
+                    </details>
                   ) : null}
                 </div>
               ) : (

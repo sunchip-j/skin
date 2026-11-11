@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AssessmentMethod } from "@/app/components/assessment-method";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -22,11 +23,13 @@ export default function BrandAboutPage() {
           <p className="mt-3">같은 유형이라도 계절, 얼굴 부위와 최근 사용 제품에 따라 체감이 다를 수 있습니다. 유형의 주요 특징과 세 가지 관리 포인트를 자신의 경험과 함께 읽고, 먼저 살펴볼 관리 항목을 정하는 참고 자료로 사용하세요.</p>
           <div className="mt-3 flex flex-wrap gap-x-5"><a href="/guides/four-dimensions" className="inline-flex min-h-11 items-center font-semibold text-emerald-700 underline">네 가지 특성의 의미</a><a href="/guides/how-to-use-results" className="inline-flex min-h-11 items-center font-semibold text-emerald-700 underline">결과를 활용하는 방법</a><a href="/survey" className="inline-flex min-h-11 items-center font-semibold text-emerald-700 underline">33문항 검사 시작</a></div>
         </section>
+        <section id="scoring" className="scroll-mt-6"><h2 className="mb-3 text-xl font-bold text-slate-900">문항·배점과 분류의 한계</h2><AssessmentMethod /></section>
         <section id="recommendations" className="scroll-mt-6">
           <h2 className="mb-3 text-xl font-bold text-slate-900">제품 추천 기준과 표시 순서</h2>
           <p>추천은 미리 등록한 제품 데이터와 16유형별 매핑으로 구성합니다. 활성 상태인 제품 중 결과 유형에 매핑된 항목을 고르고, 해당 유형의 루틴에 맞는 카테고리로 나눈 뒤 등록된 추천 순서에 따라 표시합니다. 같은 순서에서는 제품 식별자를 기준으로 정렬합니다.</p>
           <p className="mt-3">각 제품에는 유형의 어떤 특성을 고려했는지 설명하는 추천 이유가 있습니다. 첫 제품 외에 추가 항목이 있는 카테고리는 ‘다른 추천 보기’로 펼칠 수 있습니다. 모든 제품을 구매해야 한다는 뜻은 아니며, 선택 단계는 현재 고민과 사용 중인 제품에 맞춰 판단하세요.</p>
-          <p className="mt-3">목록은 전체 판매 제품의 비교 평가나 실시간 판매 순위가 아닙니다. 설문 응답·결과를 광고 입찰이나 구매 이력 조회에 전달하지 않습니다. 판매처의 성분·가격·재고는 변경될 수 있으므로 실제 판매 페이지를 확인해야 하며, 구매와 결제는 외부 판매처에서 이루어집니다.</p>
+          <p className="mt-3">목록은 전체 판매 제품의 비교 평가나 실시간 판매 순위가 아닙니다. 제품 카드에서 공개 상품정보를 검토한 날짜, 선정 근거와 확인할 점을 볼 수 있습니다. 직접 사용 후기나 임상 비교 결과로 제공하지 않습니다. 설문 응답·결과를 광고 입찰이나 구매 이력 조회에 전달하지 않습니다. 판매처의 성분·가격·재고는 변경될 수 있으므로 실제 판매 페이지를 확인해야 하며, 구매와 결제는 외부 판매처에서 이루어집니다.</p>
+          <p className="mt-3">일부 판매 링크는 올리브영 쇼핑 큐레이터 링크이며 구매가 발생하면 일정액의 수수료를 제공받습니다. 제품 목록 앞에 이 관계를 표시합니다. 링크에 대한 대가가 개별 제품의 적합성이나 효과를 보장하지 않습니다.</p>
           <a href="/guide#type-products-title" className="mt-3 inline-flex min-h-11 items-center font-semibold text-emerald-700 underline">16유형별 루틴과 제품 예시 비교하기</a>
         </section>
         <section id="limitations" className="scroll-mt-6"><h2 className="mb-3 text-xl font-bold text-slate-900">서비스의 한계와 면책 안내</h2><p>검사와 콘텐츠는 자기 응답에 기반한 일반 참고 정보이며 의료적 진단·처방·치료를 대신하지 않습니다. 특정 질환 여부나 알레르기, 개별 제품의 적합성을 판정하지 않습니다. 증상이 지속되거나 갑자기 악화되는 경우 온라인 결과만으로 판단하지 말고 의료 전문가에게 확인하세요.</p></section>

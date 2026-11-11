@@ -1,0 +1,66 @@
+[
+  {
+    "url": "https://ilina.kr/",
+    "status": 200,
+    "bytes": 22123,
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://ilina.kr\"/>"
+    ],
+    "curator": false,
+    "text": ""
+  },
+  {
+    "url": "https://ilina.kr/about",
+    "status": 200,
+    "bytes": 21578,
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://ilina.kr/about\"/>"
+    ],
+    "curator": false,
+    "text": ""
+  },
+  {
+    "url": "https://ilina.kr/guides/four-dimensions",
+    "status": 200,
+    "bytes": 36808,
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://ilina.kr/guides/four-dimensions\"/>"
+    ],
+    "curator": false,
+    "text": ""
+  },
+  {
+    "url": "https://ilina.kr/skin-type/dspw/products",
+    "status": 200,
+    "bytes": 23388,
+    "canonical": [
+      "<link rel=\"canonical\" href=\"https://ilina.kr/skin-type/dspw/products\"/>"
+    ],
+    "curator": false,
+    "text": ""
+  },
+  {
+    "url": "https://ilina.kr/robots.txt",
+    "status": 200,
+    "bytes": 124,
+    "canonical": [],
+    "curator": false,
+    "text": "User-Agent: *\nAllow: /\nDisallow: /ilina-home\nDisallow: /dev\nDisallow: /service-entry\n\nSitemap: https://ilina.kr/sitemap.xml\n"
+  },
+  {
+    "url": "https://ilina.kr/ads.txt",
+    "status": 200,
+    "bytes": 59,
+    "canonical": [],
+    "curator": false,
+    "text": "google.com, pub-5009951959536942, DIRECT, f08c47fec0942fa0\n"
+  },
+  {
+    "url": "https://ilina.kr/sitemap.xml",
+    "status": 200,
+    "bytes": 4795,
+    "canonical": [],
+    "curator": false,
+    "text": ""
+  }
+]

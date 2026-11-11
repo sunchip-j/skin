@@ -112,16 +112,14 @@ export default function HowToUseResultsGuidePage() {
           </div>
 
           <p className="mt-3 text-slate-600">
-            예를 들어 평소 피지 분비가 왕성한 지성(O) 피부라도, 건조한 실내
-            환경에 오래 머물거나 강한 세안제를 자주 쓰면 일시적으로 각질이 하얗게
-            일어나고 심한 속당김을 느낄 수 있습니다. 이때 &ldquo;피부가
-            극건성으로 완전히 바뀌었다&rdquo;고 오판하여 유분이 매우 많은 무거운
-            크림이나 오일을 듬뿍 바르면 모공을 막아 트러블이 심해질 수 있습니다.
+            예를 들어 O로 분류됐더라도 지금 볼에 당김이 느껴질 수 있습니다.
+            설문은 얼굴 부위별 수분량을 측정하지 않으므로 코드보다 실제 불편을
+            함께 살펴보세요. 코드 하나만 보고 제품을 전면 교체할 필요는 없습니다.
           </p>
           <p className="mt-3 text-slate-600">
-            설문 결과는 장기적인 &lsquo;유형&rsquo;의 경향성을 나타내므로,
-            일시적인 컨디션 난조가 있을 때는 기초 제품을 전면 교체하기보다
-            자극 요인을 줄이고 피부가 스스로 안정을 찾도록 돕는 것이 좋습니다.
+            결과는 최근 경험에 대한 응답을 정리한 것이며 장기적인 피부 특성을
+            검증한 결과가 아닙니다. 불편이 시작된 시점, 사용 제품과 환경 변화를
+            기록하고, 지속되거나 심한 증상은 의료 전문가에게 확인하세요.
           </p>
         </section>
 
@@ -219,10 +217,12 @@ export default function HowToUseResultsGuidePage() {
                 2. 민감한 편이라면 부분 테스트를 먼저 고려하세요.
               </h3>
               <p className="mt-1 text-sm text-slate-600">
-                성분 변화에 예민하게 반응하는 편이라면 얼굴 전체에 바르기 전,
-                턱선이나 귀 뒤쪽처럼 눈에 잘 띄지 않는 연약한 부위에 소량을
-                며칠 발라보며 가려움이나 붉어짐이 없는지 확인해 보는 방법이
-                도움이 됩니다.
+                미국피부과학회(AAD)는 팔 안쪽이나 팔꿈치 안쪽의 작은 부위에
+                평소 사용하는 양으로 하루 두 번, 7~10일 시험하는 방법을 안내합니다.
+                씻어내는 제품은 사용 설명서의 접촉 시간을 따르세요. 붉어짐, 가려움,
+                부기가 생기면 씻어내고 사용을 중단하며, 반응이 심하거나 지속되면 진료를 받으세요.
+                이 자가 확인은 알레르기 진단용 패치 검사를 대신하지 않습니다.
+                {" "}<a href="https://www.aad.org/public/everyday-care/skin-care-secrets/prevent-skin-problems/test-skin-care-products" className="font-bold text-emerald-700 underline">AAD의 제품 시험 안내</a>
               </p>
             </div>
             <div className="rounded-xl border border-slate-100 bg-white p-5">

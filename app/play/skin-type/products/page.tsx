@@ -30,6 +30,11 @@ export function SkinTypeProductsContent({
             <br />
             기본 스킨케어 루틴과 추천 제품을 확인해보세요.
           </p>
+
+          <p className="mt-3 text-sm leading-6 text-slate-600">등록 제품 중 유형에 연결한 비교 후보입니다. 전체 시장의 순위나 개인별 효과 검증이 아니며, 토너·세럼은 필요한 경우에만 선택하세요. 각 카드에서 검토 근거와 주의점을 확인할 수 있습니다.</p>
+          <p className="mt-4 rounded-xl bg-emerald-50 px-4 py-3 text-sm font-medium leading-6 text-slate-700">
+            이 포스팅은 올리브영 쇼핑 큐레이터 활동의 일환으로, 구매가 발생할 경우 일정액의 수수료를 제공받습니다.
+          </p>
         </header>
 
         <section className="rounded-[28px] border border-emerald-100 bg-white px-5 py-6 shadow-[0_18px_44px_rgba(15,118,110,0.10)]">

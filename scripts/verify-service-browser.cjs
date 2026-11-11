@@ -47,7 +47,7 @@ async function awaitTarget() {
   await evaluate('document.querySelector(\'a[href="/play/skin-type/products"]\').click()');
   await until('location.pathname === "/play/skin-type/products" && document.body.innerText.includes("맞춤 제품 추천")');
   assert.equal(await evaluate('location.origin'),origin);
-  assert.ok(await evaluate('document.querySelectorAll(\'a[href*="oliveyoung.co.kr"]\').length')>0);
+  assert.ok(await evaluate('document.querySelectorAll(\'a[href*="oliveyoung.co.kr"], a[href*="oy.run"]\').length')>0);
   await snap('products');
   await evaluate('[...document.querySelectorAll("button")].find(b=>b.textContent.includes("결과로 돌아가기")).click()');
   await until('location.pathname === "/result" && document.body.innerText.includes("추천 제품 보기")');
@@ -70,7 +70,7 @@ async function awaitTarget() {
     await evaluate(`document.querySelector('a[href="/play/skin-type/products"]').click()`);
     await until(`location.pathname === "/play/skin-type/products" && document.body.innerText.includes(${JSON.stringify(code+' 맞춤 제품 추천')})`);
     assert.equal(await evaluate('location.origin'),origin);
-    assert.ok(await evaluate(`document.querySelectorAll('a[href*="oliveyoung.co.kr"]').length`)>0,code);
+    assert.ok(await evaluate(`document.querySelectorAll('a[href*="oliveyoung.co.kr"], a[href*="oy.run"]').length`)>0,code);
    }
    console.log('PASS browser:',host,'all 16 result and session recommendation screens render with product links.');
   }
