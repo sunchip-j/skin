@@ -41,6 +41,7 @@ export function SiteFooter() {
         <span aria-hidden="true" className="text-emerald-200">
           ·
         </span>
+        <Link href="/learn" className="inline-flex min-h-11 items-center transition hover:text-emerald-700">피부 관리 노트</Link>
         <span>© 2026 {siteConfig.name}</span>
       </div>
     </footer>

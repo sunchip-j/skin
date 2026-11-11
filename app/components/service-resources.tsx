@@ -10,6 +10,7 @@ export function ServiceResources({ products = false }: { products?: boolean }) {
         <p className="text-sm leading-7">ILINA의 33문항은 최근 3개월의 경험을 네 가지 피부 특성으로 정리하는 자기 응답 검사입니다. 원본 바우만 문진표와 동일한 검사나 의료적 진단으로 제공하지 않으며, 피부 질환이나 제품 효과를 판정하지 않습니다.</p>
         <nav aria-label="검사 방법과 결과 활용" className="grid gap-3 sm:grid-cols-2">
           {[
+            ["/learn", "고민별 피부 관리 노트"],
             ["/about#method", "33문항의 계산 방식과 한계"],
             ["/guides/four-dimensions", "네 가지 피부 특성 자세히 읽기"],
             ["/guides/how-to-use-results", "결과 해석과 관리 우선순위"],

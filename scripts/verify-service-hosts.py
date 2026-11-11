@@ -38,6 +38,8 @@ args_parser.add_argument('--before', type=Path)
 args = args_parser.parse_args()
 types = [a+b+c+d for a in 'do' for b in 'sr' for c in 'pn' for d in 'wt']
 service = ['/', '/guide'] + [f'/skin-type/{t}' for t in types] + [f'/skin-type/{t}/products' for t in types]
+articles = json.loads((Path(__file__).resolve().parents[1] / 'features/skin-content/articles.json').read_text())
+service += ['/learn'] + ['/learn/'+a['slug'] for a in articles]
 editorial = ['/company', '/about', '/privacy', '/guides/four-dimensions', '/guides/how-to-use-results', '/story/why-we-built-skin-type']
 functional = ['/survey', '/result', '/play/skin-type', '/play/skin-type/survey', '/play/skin-type/products']
 cache = {}
@@ -95,7 +97,7 @@ for host in ['ilina.kr', 'skin.ilina.kr']:
     for path in ['/survey', '/result', '/play/skin-type/products']:
         status, _, body = get(host, path)
         assert status == 200 and 'noindex' in Page(body).meta.get('robots', ''), (host, path)
-    for path in ['/missing-page', '/skin-type/invalid', '/skin-type/invalid/products']:
+    for path in ['/missing-page', '/skin-type/invalid', '/skin-type/invalid/products', '/learn/not-a-real-article']:
         status, _, body = get(host, path)
         assert status == 404 and 'noindex' in Page(body).meta.get('robots', ''), (host, path, status)
     status, headers, _ = get(host, '/play/skin-type/survey?source=test')

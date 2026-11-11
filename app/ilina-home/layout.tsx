@@ -15,7 +15,8 @@ export default function BrandLayout({ children }: { children: React.ReactNode })
       <div className="mx-auto w-full max-w-3xl px-5 sm:px-8">
         <header className="flex min-h-20 items-center justify-between gap-4 border-b border-emerald-100">
           <Link href="/" className="inline-flex min-h-11 items-center text-sm font-black tracking-[0.22em] text-emerald-700" aria-label="ILINA 홈">ILINA</Link>
-          <nav aria-label="브랜드 메뉴">
+          <nav aria-label="브랜드 메뉴" className="flex flex-wrap gap-x-4">
+            <Link href="/learn" className="inline-flex min-h-11 items-center text-sm font-semibold text-emerald-800">피부 관리 노트</Link>
             <Link href="/company" className="mr-4 inline-flex min-h-11 items-center text-sm font-semibold text-slate-600 hover:text-emerald-700">서비스와 이야기</Link>
             <Link href="/about" className="inline-flex min-h-11 items-center text-sm font-semibold text-slate-600 hover:text-emerald-700">ILINA 소개</Link>
           </nav>

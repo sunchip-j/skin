@@ -81,7 +81,7 @@ export default function IlinaHomePage() {
               <span className="text-xs font-semibold text-slate-400">읽어보기 →</span>
             </div>
             <h3 className="mt-2 text-lg font-bold text-slate-900">
-              피부타입을 결정하는 4가지 기준: 건성·지성 너머의 입체적 분류
+              피부 설문의 네 가지 축과 해석의 한계
             </h3>
             <p className="mt-2 text-sm leading-7 text-slate-600">
               유수분뿐 아니라 자극 반응성, 색소 침착, 탄력 경향까지. 피부를 4개 축으로 나누어 입체적으로 바라보고 일상에서 관찰하는 방법을 설명합니다.
@@ -100,7 +100,7 @@ export default function IlinaHomePage() {
               피부타입 결과를 일상의 스킨케어 기준으로 활용하는 5가지 원칙
             </h3>
             <p className="mt-2 text-sm leading-7 text-slate-600">
-              결과 코드를 화장품 과소비로 연결하지 않고, 피부 체질(Type)과 일시적 컨디션(Condition)을 구분하며 관리 우선순위를 정하는 실천 수칙을 다룹니다.
+              결과 코드를 화장품 과소비로 연결하지 않고, 설문 응답과 현재의 불편을 함께 살펴보며 관리 우선순위를 정하는 실천 수칙을 다룹니다.
             </p>
           </Link>
 

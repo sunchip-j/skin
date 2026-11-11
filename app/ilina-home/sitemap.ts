@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { skinArticles } from "@/features/skin-content/articles";
 import { SKIN_TYPE_INFOS } from "@/features/skin-type/data/skin-type-info";
 import { siteConfig } from "@/config/site";
 
@@ -14,6 +15,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/story/why-we-built-skin-type", changeFrequency: "monthly", priority: 0.7 },
     { path: "/privacy", changeFrequency: "monthly", priority: 0.3 },
   ];
+
+  routes.push({ path: "/learn", changeFrequency: "monthly", priority: 0.9 });
+  for (const article of skinArticles) {
+    routes.push({ path: `/learn/${article.slug}`, changeFrequency: "monthly", priority: 0.8 });
+  }
 
   for (const { code } of SKIN_TYPE_INFOS) {
     routes.push({ path: `/skin-type/${code.toLowerCase()}`, changeFrequency: "monthly", priority: 0.7 });

@@ -78,18 +78,9 @@ async function awaitTarget() {
  if(!baseline) {
   const nav = async path => { await call('Page.navigate',{url:'http://ilina.kr:3108'+path}); await until(`location.pathname === ${JSON.stringify(path)} && document.readyState === "complete"`); await delay(150); };
   await nav('/');
-  await evaluate(`document.querySelector('button[aria-label="바우만 피부 타입 안내 열기"]').focus(); document.activeElement.click()`);
-  await until(`!!document.querySelector('[role="dialog"]')`);
-  assert.equal(await evaluate('document.activeElement.getAttribute("aria-label")'),'닫기');
-  assert.ok(await evaluate(`document.getElementById(document.querySelector('[role="dialog"]').getAttribute('aria-labelledby'))?.textContent.includes('바우만')`));
-  for(const modifiers of [0,8]) {
-   await call('Input.dispatchKeyEvent',{type:'keyDown',key:'Tab',code:'Tab',windowsVirtualKeyCode:9,modifiers});
-   assert.ok(await evaluate(`document.querySelector('[role="dialog"]').contains(document.activeElement)`));
-  }
-  await call('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
-  await until(`!document.querySelector('[role="dialog"]')`);
-  assert.equal(await evaluate('document.activeElement.getAttribute("aria-label")'),'바우만 피부 타입 안내 열기');
-  const paths=['/','/guide','/about','/privacy','/company','/guides/four-dimensions','/guides/how-to-use-results','/story/why-we-built-skin-type','/survey','/result','/play/skin-type/products','/skin-type/dsnt/products'];
+  assert.ok(await evaluate('document.body.innerText.includes("다음 선택을 차분하게")'));
+  assert.equal(await evaluate(`document.querySelectorAll('nav[aria-label="고민별 읽기"] a').length`),4);
+  const paths=['/','/guide','/about','/privacy','/company','/guides/four-dimensions','/guides/how-to-use-results','/story/why-we-built-skin-type','/survey','/result','/play/skin-type/products','/skin-type/dsnt/products','/learn', ...require('../features/skin-content/articles.json').map(a=>'/learn/'+a.slug)];
   for(const width of [320,390,768,1440]) {
    await call('Emulation.setDeviceMetricsOverride',{width,height:844,deviceScaleFactor:1,mobile:false});
    for(const path of paths) {
@@ -106,8 +97,8 @@ async function awaitTarget() {
     }
    }
   }
-  console.log('PASS root keyboard dialog: accessible name, focus trap, Escape and focus restoration.');
-  console.log('PASS 48 viewport/page checks (320/390/768/1440): no horizontal overflow, main/h1 landmarks, named controls.');
+  console.log('PASS root editorial home: heading and four concern-based article links.');
+  console.log(`PASS ${paths.length*4} viewport/page checks (320/390/768/1440): no horizontal overflow, main/h1 landmarks, named controls.`);
  }
  ws.close();
 })().catch(e => { console.error(e); process.exit(1); });

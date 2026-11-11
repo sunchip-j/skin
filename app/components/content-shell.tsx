@@ -20,6 +20,8 @@ export function ContentShell({
           <Link href="/guide">피부 가이드</Link>
           <span aria-hidden="true" className="text-emerald-200">/</span>
           <Link href="/about">서비스 소개</Link>
+          <span aria-hidden="true" className="text-emerald-200">/</span>
+          <Link href="/learn">피부 관리 노트</Link>
         </nav>
 
         <header className="rounded-[30px] border border-emerald-100 bg-white px-6 py-8 shadow-[0_18px_44px_rgba(15,118,110,0.08)] sm:px-9">
