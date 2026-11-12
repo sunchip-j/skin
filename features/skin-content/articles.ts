@@ -9,6 +9,7 @@ export type SkinArticle = {
   takeaway: string;
   publishedAt: string;
   updatedAt: string;
+  worksheet?: boolean;
   sections: {
     id: string;
     title: string;

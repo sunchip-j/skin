@@ -5,6 +5,7 @@ import { serviceMetadata } from "@/config/seo";
 import { siteConfig } from "@/config/site";
 import { EditorialShell } from "@/app/components/editorial-shell";
 import { ArticleCard } from "@/app/components/article-card";
+import { SkinObservationSheet } from "@/app/components/skin-observation-sheet";
 import { getSkinArticle, skinArticles } from "@/features/skin-content/articles";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -60,6 +61,7 @@ export default async function ArticlePage({ params }: PageProps) {
             </table>
           </div>}
         </section>)}</div>
+        {article.worksheet && <SkinObservationSheet />}
         <section className="mt-12 rounded-2xl bg-emerald-50 p-6">
           <h2 className="text-xl font-black">읽고 나서 확인할 것</h2>
           <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-700">{article.checklist.map(item => <li key={item} className="flex gap-3"><span aria-hidden="true" className="text-emerald-700">✓</span><span>{item}</span></li>)}</ul>

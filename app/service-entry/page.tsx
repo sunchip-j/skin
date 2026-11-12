@@ -4,6 +4,7 @@ import { EditorialShell } from "@/app/components/editorial-shell";
 import { ArticleCard } from "@/app/components/article-card";
 import { ServiceResources } from "@/app/components/service-resources";
 import { skinArticles } from "@/features/skin-content/articles";
+import { SkinObservationSheet } from "@/app/components/skin-observation-sheet";
 
 export const metadata = serviceMetadata("/", "ILINA | 피부를 이해하는 검사와 관리 노트", "33문항 피부타입 검사와 근거 있는 관리 노트. 세안·보습, 피부 관찰, 새 제품 선택과 자외선 보호를 설명과 비교표로 살펴보세요.");
 
@@ -30,13 +31,16 @@ export default function RootServiceHome() {
               ["simple-skin-care-routine", "바르는 제품이 너무 많아요"],
               ["introducing-new-products", "새 화장품을 써도 될까요?"],
               ["sunscreen-label-and-use", "선크림은 무엇을 봐야 하나요?"],
+              ["choosing-a-moisturizer", "젤·로션·크림 중 무엇을 고를까요?"],
+              ["face-washing-without-overdoing", "세안 뒤 당기는 이유가 궁금해요"],
             ].map(([slug, title]) => <Link key={slug} href={`/learn/${slug}`} className="flex min-h-14 items-center justify-between gap-3 py-3 hover:text-emerald-700"><span>{title}</span><span aria-hidden="true">↗</span></Link>)}
           </nav>
         </aside>
       </section>
+      <SkinObservationSheet />
       <section aria-labelledby="notes-title" className="py-10 sm:py-12">
         <div className="flex flex-wrap items-end justify-between gap-4"><div><p className="text-xs font-black tracking-widest text-emerald-700">피부 관리 노트</p><h2 id="notes-title" className="mt-3 text-3xl font-black tracking-tight">읽고 나면, 확인할 것이 분명해집니다.</h2></div><Link href="/learn" className="inline-flex min-h-11 items-center text-sm font-bold text-emerald-800 underline underline-offset-4">모든 글과 작성 기준</Link></div>
-        <p className="mt-4 max-w-2xl text-base leading-8 text-slate-600">공식 자료의 일반 안내에 ILINA의 비교표와 가상 사례를 더했습니다. 내 상황과 맞는 부분을 살피고, 다음에 확인할 한 가지를 정해보세요.</p>
+        <p className="mt-4 max-w-2xl text-base leading-8 text-slate-600">세안을 마친 뒤 당긴다면 씻는 과정을, 보습제가 무겁다면 제형과 바르는 부위를 살펴보세요. 여섯 편의 글에서 실제 선택 순서, 비교표와 기록 예시를 읽을 수 있습니다.</p>
         <div className="mt-7 grid gap-5 md:grid-cols-2">{skinArticles.map((article, i) => <ArticleCard key={article.slug} article={article} number={i + 1} />)}</div>
       </section>
       <section aria-labelledby="use-result" className="rounded-2xl bg-emerald-50 p-6 sm:p-8">

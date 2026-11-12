@@ -3,6 +3,7 @@ import { serviceMetadata } from "@/config/seo";
 import { EditorialShell } from "@/app/components/editorial-shell";
 import { ArticleCard } from "@/app/components/article-card";
 import { skinArticles } from "@/features/skin-content/articles";
+import { SkinObservationSheet } from "@/app/components/skin-observation-sheet";
 
 export const metadata = serviceMetadata("/learn", "피부 관리 노트 | ILINA", "세안과 보습, 피부 관찰, 새 화장품 도입, 자외선 보호를 근거와 예시로 읽는 피부 관리 안내입니다.");
 
@@ -16,11 +17,17 @@ export default function LearnPage() {
       </header>
       <section aria-labelledby="reading-path" className="mt-10 rounded-2xl border border-emerald-100 bg-emerald-50/60 p-6">
         <h2 id="reading-path" className="text-lg font-black">지금 고민에서 시작하세요</h2>
-        <p className="mt-3 text-sm leading-7 text-slate-600">무엇을 발라야 할지 모르겠다면 기본 관리, 타입과 느낌이 다르다면 피부 관찰, 구매를 앞두고 있다면 제품 선택, 외출을 준비한다면 자외선 보호 글부터 읽어보세요.</p>
+        <p className="mt-3 text-sm leading-7 text-slate-600">무엇을 발라야 할지 모르겠다면 기본 관리부터 읽으세요. 세안 뒤 당김은 세안 습관 글로, 보습제가 무거운 고민은 제형 선택 글로 이어집니다. 새 제품 구매와 자외선 보호는 각각 별도 안내에서 확인할 수 있습니다.</p>
+        <nav aria-label="고민별 본문 바로가기" className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm font-bold text-emerald-800">
+          <Link href="/learn/face-washing-without-overdoing" className="inline-flex min-h-11 items-center underline">세안 과정 점검</Link>
+          <Link href="/learn/choosing-a-moisturizer" className="inline-flex min-h-11 items-center underline">보습제 비교</Link>
+          <Link href="/learn/oily-but-tight#seven-days" className="inline-flex min-h-11 items-center underline">피부 관찰 예시</Link>
+        </nav>
       </section>
       <section aria-label="피부 관리 글 목록" className="mt-6 grid gap-5 md:grid-cols-2">
         {skinArticles.map((article, index) => <ArticleCard key={article.slug} article={article} number={index + 1} />)}
       </section>
+      <SkinObservationSheet />
       <section id="editorial-policy" className="mt-12 border-t border-emerald-100 pt-8 text-sm leading-7 text-slate-600">
         <h2 className="text-xl font-black text-slate-950">글을 만드는 기준</h2>
         <p className="mt-4">작성·관리 주체는 ILINA입니다. 미국피부과학회(AAD)와 NHS 등 공개 자료를 바탕으로 일반 관리 정보를 정리하고, 참고한 문단과 원문을 연결합니다. 비교표와 가상 사례는 이해를 돕기 위해 ILINA가 구성했으며 실제 사용 후기나 임상 시험 결과가 아닙니다.</p>

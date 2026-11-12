@@ -4,6 +4,8 @@ Markdown documents for this project are stored here.
 
 ## Latest AdSense work
 
+- `content/2026-11-12-skin-notes-depth.md`: 기존 본문 보강·신규 보습/세안 글·피부 관찰 기록지 및 검증
+
 - `content/2026-11-12-editorial-home-and-skin-notes.md`: 운영 메인 개편·관리 노트 네 편·근거 및 검증
 
 - `audit/2026-11-12-adsense-reapplication-plan.md`: 이전 대화·운영 상태·공식 기준·외부 사례, 반영 내역과 재신청 조건
